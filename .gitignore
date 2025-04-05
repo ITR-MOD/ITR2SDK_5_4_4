@@ -1,0 +1,63 @@
+# Ignore Mac system files
+.DS_Store
+
+# Ignore Windows system files
+Thumbs.db
+desktop.ini
+
+# Ignore compiled binaries and intermediate files
+Binaries/
+DerivedDataCache/
+Intermediate/
+Saved/
+itr2cas/
+UEAssetToolkit-dev/
+ZZ_ue4ssMods/
+ConfigOld/
+Content/
+UnrealEngine-5.3.2-release.zip
+UEAssetToolkit-dev.zip
+ExtractUcas.bat
+# Ignore configuration files that may differ by developer
+*.opensdf
+*.VC.db
+*.VC.VC.opendb
+*.sln
+
+# Ignore auto-generated files by Unreal
+Build/ 
+.vscode/
+.vs/
+*.ini.local
+
+# Ignore compiled shaders and cache
+*.idb
+*.opendb
+
+# Ignore temporary files
+*.tmp
+*.temp
+*.log
+*.obj
+*.pdb
+*.pch
+*.sdf
+*.ipch
+*.iobj
+*.ipdb
+
+# Ignore Unreal Engine project backup files
+Backup/
+Reimported/
+
+# Ignore plugins and their intermediates
+Plugins/*/Binaries/
+Plugins/*/Intermediate/
+Plugins/JsonAsAsset
+Plugins/ZenTools
+
+# Ignore custom file types that shouldn't be shared
+*.swp
+*.bak
+*.backup
+*.orig
