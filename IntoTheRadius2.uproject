@@ -33,7 +33,8 @@
 			"SupportedTargetPlatforms": [
 				"Win64",
 				"Linux",
-				"Android"
+				"Android",
+				"VisionOS"
 			]
 		},
 		{
@@ -46,7 +47,8 @@
 			"SupportedTargetPlatforms": [
 				"Win64",
 				"Linux",
-				"Android"
+				"Android",
+				"VisionOS"
 			]
 		},
 		{
@@ -55,7 +57,9 @@
 			"SupportedTargetPlatforms": [
 				"Win64",
 				"Linux",
-				"Android"
+				"Android",
+				"Mac",
+				"IOS"
 			]
 		},
 		{
@@ -68,7 +72,9 @@
 			"SupportedTargetPlatforms": [
 				"Win64",
 				"Linux",
-				"Android"
+				"Android",
+				"Mac",
+				"IOS"
 			]
 		},
 		{

@@ -15,6 +15,7 @@ UEAssetToolkit-dev/
 ZZ_ue4ssMods/
 ConfigOld/
 Content/
+output/
 UnrealEngine-5.3.2-release.zip
 UEAssetToolkit-dev.zip
 ExtractUcas.bat
