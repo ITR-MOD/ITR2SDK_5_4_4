@@ -15,6 +15,7 @@ class APawn;
 class ARadiusItemBase;
 class UGripMotionControllerComponent;
 class UObject;
+class URadiusInitializeObject;
 class USceneComponent;
 
 UINTERFACE(Blueprintable)
@@ -95,7 +96,7 @@ public:
     APawn* GetItemOwningPawn();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    UObject* GetInitializeComponent();
+    URadiusInitializeObject* GetInitializeComponent();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     TArray<AActor*> GetHolstered();

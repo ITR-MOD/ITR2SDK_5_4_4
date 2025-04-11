@@ -137,7 +137,7 @@ public:
     void AddItemToTrack(const EVRHand Hand, AActor* Item);
     
     UFUNCTION(BlueprintCallable)
-    void AddContainerToContainer(const FString& ContainerID, const FString& ParentID, FTransform RelativeTransform, bool Silent);
+    void AddContainerToContainer(const FString& ContainerID, const FString& ParentID, const FTransform RelativeTransform, const bool Silent);
     
     UFUNCTION(BlueprintCallable)
     void AddAttachedItemToTrack(const EVRHand Hand, AActor* AttachedItem);

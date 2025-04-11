@@ -46,7 +46,7 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FTimerHandle TH_RespawnTimer;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_CurrentItem, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
     ARadiusItemBase* CurrentItem;
     
 public:
@@ -66,9 +66,6 @@ public:
     void ResetRespawn();
     
 private:
-    UFUNCTION(BlueprintCallable)
-    void OnRep_CurrentItem();
-    
     UFUNCTION(BlueprintCallable)
     void ItemTaken(UGripMotionControllerComponent* Controller, FBPActorGripInformation GripInfo);
     

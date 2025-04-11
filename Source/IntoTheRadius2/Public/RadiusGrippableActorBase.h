@@ -5,7 +5,6 @@
 #include "OnDistanceGripChangedDelegate.h"
 #include "RadiusItemDelegateOnHolsteredDelegate.h"
 #include "RadiusItemInterface.h"
-#include "RadiusPooledObjectInterface.h"
 #include "RadiusGrippableActorBase.generated.h"
 
 class UMeshComponent;
@@ -14,7 +13,7 @@ class UStaticMeshComponent;
 class USyncTransformComponent;
 
 UCLASS(Blueprintable)
-class INTOTHERADIUS2_API ARadiusGrippableActorBase : public AGrippableActor, public IRadiusItemInterface, public IRadiusPooledObjectInterface {
+class INTOTHERADIUS2_API ARadiusGrippableActorBase : public AGrippableActor, public IRadiusItemInterface {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintAssignable, BlueprintCallable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))

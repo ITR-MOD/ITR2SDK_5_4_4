@@ -18,8 +18,5 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void OnPopFromPool(const FTransform Transform);
     
-    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    bool IsExcludedFromPool();
-    
 };
 

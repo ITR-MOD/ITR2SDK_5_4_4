@@ -1,14 +1,13 @@
 #include "RadiusItemBase.h"
 #include "Net/UnrealNetwork.h"
 #include "RadiusDataComponent.h"
-#include "RadiusInitializeComponent.h"
 
 ARadiusItemBase::ARadiusItemBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->DataComponent = CreateDefaultSubobject<URadiusDataComponent>(TEXT("Data Component"));
     this->GripControllerPrimary = NULL;
     this->GripControllerSecondary = NULL;
     this->GS_LerptToHand = NULL;
-    this->InitializeComponent = CreateDefaultSubobject<URadiusInitializeComponent>(TEXT("Initialize Component"));
+    this->InitializeComponent = NULL;
 }
 
 void ARadiusItemBase::Server_ChangeItemDurability_Implementation(const float DeltaDurability) {

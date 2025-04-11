@@ -1,14 +1,13 @@
 #include "RadiusHolder.h"
 #include "Components/SceneComponent.h"
 #include "Net/UnrealNetwork.h"
-#include "RadiusInitializeComponent.h"
 
 ARadiusHolder::ARadiusHolder(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
     this->bOnlyOwnerCanInteract = false;
     this->bPreventCollisionWithAttachedItem = true;
     this->SceneComponent = (USceneComponent*)RootComponent;
-    this->InitializeComponent = CreateDefaultSubobject<URadiusInitializeComponent>(TEXT("Initialize Component"));
+    this->InitializeComponent = NULL;
 }
 
 void ARadiusHolder::TryUpdateHolsteredActors() {

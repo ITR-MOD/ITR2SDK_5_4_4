@@ -16,7 +16,7 @@
 class UGS_LerpToHand;
 class UGripMotionControllerComponent;
 class URadiusDataComponent;
-class URadiusInitializeComponent;
+class URadiusInitializeObject;
 class URadiusItemDynamicData;
 
 UCLASS(Blueprintable)
@@ -92,8 +92,8 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGS_LerpToHand* GS_LerptToHand;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    URadiusInitializeComponent* InitializeComponent;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    URadiusInitializeObject* InitializeComponent;
     
 public:
     ARadiusItemBase(const FObjectInitializer& ObjectInitializer);

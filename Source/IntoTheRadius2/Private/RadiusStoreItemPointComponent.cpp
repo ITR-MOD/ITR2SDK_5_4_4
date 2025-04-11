@@ -18,9 +18,6 @@ void URadiusStoreItemPointComponent::RespawnActor() {
 void URadiusStoreItemPointComponent::ResetRespawn() {
 }
 
-void URadiusStoreItemPointComponent::OnRep_CurrentItem() {
-}
-
 void URadiusStoreItemPointComponent::ItemTaken(UGripMotionControllerComponent* Controller, FBPActorGripInformation GripInfo) {
 }
 

@@ -7,7 +7,7 @@
 
 class ARadiusGrippableActorBase;
 class UObject;
-class URadiusInitializeComponent;
+class URadiusInitializeObject;
 class URadiusItemDynamicData;
 class USceneComponent;
 
@@ -28,8 +28,8 @@ private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* SceneComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    URadiusInitializeComponent* InitializeComponent;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    URadiusInitializeObject* InitializeComponent;
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing=OnRep_HolsteredActors, meta=(AllowPrivateAccess=true))

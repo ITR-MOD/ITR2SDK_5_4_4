@@ -1,9 +1,8 @@
 #include "RadiusHolsterComponent.h"
 #include "Net/UnrealNetwork.h"
-#include "RadiusInitializeComponent.h"
 
 URadiusHolsterComponent::URadiusHolsterComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
-    this->InitializeComponent = CreateDefaultSubobject<URadiusInitializeComponent>(TEXT("Initialize Component"));
+    this->InitializeComponent = NULL;
     this->bOnlyOwnerCanInteract = false;
     this->bDisableWhenOnPlayer = false;
     this->bDisableWhenNotInHands = false;
@@ -88,6 +87,9 @@ ARadiusGrippableActorBase* URadiusHolsterComponent::GetHolsteredActor() const {
 
 
 void URadiusHolsterComponent::DoInstantHolster() {
+}
+
+void URadiusHolsterComponent::Continue_UpdateReplicatedHolsteredActor() {
 }
 
 void URadiusHolsterComponent::Continue_SpawnSavedItems(AActor* ItemActor, URadiusItemDynamicData* ItemDynamicData) {

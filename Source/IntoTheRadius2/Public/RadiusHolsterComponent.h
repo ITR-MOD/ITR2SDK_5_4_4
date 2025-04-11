@@ -16,7 +16,7 @@ class ARadiusGrippableActorBase;
 class UGripMotionControllerComponent;
 class UPrimitiveComponent;
 class URadiusHolsterComponent;
-class URadiusInitializeComponent;
+class URadiusInitializeObject;
 class URadiusItemDynamicData;
 class UShapeComponent;
 class USphereComponent;
@@ -32,8 +32,8 @@ public:
     FOnItemHolsterAttachChanged OnItemHolsterAttachChanged;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
-    URadiusInitializeComponent* InitializeComponent;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    URadiusInitializeObject* InitializeComponent;
     
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -169,6 +169,9 @@ public:
 private:
     UFUNCTION(BlueprintCallable)
     void DoInstantHolster();
+    
+    UFUNCTION(BlueprintCallable)
+    void Continue_UpdateReplicatedHolsteredActor();
     
     UFUNCTION(BlueprintCallable)
     void Continue_SpawnSavedItems(AActor* ItemActor, URadiusItemDynamicData* ItemDynamicData);

@@ -113,7 +113,7 @@ bool URadiusContainerSubsystem::CanAttachItemToMostRelevantHolster(const EVRHand
 void URadiusContainerSubsystem::AddItemToTrack(const EVRHand Hand, AActor* Item) {
 }
 
-void URadiusContainerSubsystem::AddContainerToContainer(const FString& ContainerID, const FString& ParentID, FTransform RelativeTransform, bool Silent) {
+void URadiusContainerSubsystem::AddContainerToContainer(const FString& ContainerID, const FString& ParentID, const FTransform RelativeTransform, const bool Silent) {
 }
 
 void URadiusContainerSubsystem::AddAttachedItemToTrack(const EVRHand Hand, AActor* AttachedItem) {
