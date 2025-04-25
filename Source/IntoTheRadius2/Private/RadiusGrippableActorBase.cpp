@@ -4,6 +4,7 @@
 
 ARadiusGrippableActorBase::ARadiusGrippableActorBase(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->SyncTransfromComponent = CreateDefaultSubobject<USyncTransformComponent>(TEXT("SyncTransformComponent"));
+    this->bAlwaysAttachedProfile = false;
     this->OwnershipId = 0;
 }
 
@@ -30,6 +31,8 @@ UStaticMeshComponent* ARadiusGrippableActorBase::GetStaticMeshComponent_Implemen
 
 USkeletalMeshComponent* ARadiusGrippableActorBase::GetSkeletalMeshComponent_Implementation() const {
     return NULL;
+}
+void ARadiusGrippableActorBase::AfterBeginPlay() {
 }
 
 void ARadiusGrippableActorBase::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {

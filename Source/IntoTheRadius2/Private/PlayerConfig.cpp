@@ -54,6 +54,8 @@ UPlayerConfig::UPlayerConfig() {
     this->MinCharacterBodyHeightPercentageToCrouch = 0.90f;
     this->MinCharacterBodyHeightPercentageToJump = 0.90f;
     this->MinStandingCharacterBodyHeightPercentage = 0.90f;
+    this->CameraHeightToBecomeInvisible = 60.00f;
+    this->CameraHeightToBecomeVisible = 65.00f;
     this->MinCameraHeightToMove = 100.00f;
     this->MaxCameraHeight = 179.00f;
     this->MinCameraHeight = 100.00f;

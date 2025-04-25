@@ -25,6 +25,7 @@ class UDataTable;
 class UGripMotionControllerComponent;
 class UObject;
 class UPrimitiveComponent;
+class URadiusHandSocketComponent;
 class URadiusItemDynamicData;
 class UScrollBox;
 class USoundBase;
@@ -157,6 +158,12 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FGameplayTag GetLevelTagFromGateTag(const UObject* WorldContextObject, const FGameplayTag GateTag);
+
+    UFUNCTION(BlueprintCallable)
+    static TArray<URadiusHandSocketComponent*> GetHandSocketsByTags(const AActor* Actor, FGameplayTagContainer GripTagsToInclude, FGameplayTagContainer GripTagsToExclude);
+
+    UFUNCTION(BlueprintCallable)
+    static URadiusHandSocketComponent* GetHandSocketByName(const AActor* Actor, const FName& SlotName);
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetHandHolsterName(UGripMotionControllerComponent* Controller);

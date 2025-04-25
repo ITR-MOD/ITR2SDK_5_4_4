@@ -7,6 +7,7 @@ FWeaponStaticData::FWeaponStaticData() {
     this->bDisableSmoothing = false;
     this->DurabilityDamageAutoFireCoefficient = 0.00f;
     this->bCockedOnSafety = false;
+    this->bIsOpenAfterLastRound = false;
     this->DisplayReliability = 0.00f;
     this->bAimSmoothing = false;
     this->AimSmoothingAlpha = 0.00f;

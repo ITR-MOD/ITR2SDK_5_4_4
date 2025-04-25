@@ -27,6 +27,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USyncTransformComponent* SyncTransfromComponent;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    bool bAlwaysAttachedProfile;
     
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -62,6 +65,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     USkeletalMeshComponent* GetSkeletalMeshComponent() const;
+
+    UFUNCTION(BlueprintCallable)
+    void AfterBeginPlay();
     
 
     // Fix for true pure virtual functions not being implemented

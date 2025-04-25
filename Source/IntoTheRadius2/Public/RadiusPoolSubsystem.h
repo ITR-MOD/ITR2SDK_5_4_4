@@ -1,7 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/NoExportTypes.h"
-#include "ActorsArray.h"
+#include "ActorsPoolArray.h"
 #include "ItemConfiguration.h"
 #include "RadiusGameInstanceSubsystem.h"
 #include "Templates/SubclassOf.h"
@@ -15,8 +15,8 @@ class INTOTHERADIUS2_API URadiusPoolSubsystem : public URadiusGameInstanceSubsys
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TMap<FString, FActorsArray> Pool;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TMap<FString, FActorsPoolArray> Pool;
     
 public:
     URadiusPoolSubsystem();

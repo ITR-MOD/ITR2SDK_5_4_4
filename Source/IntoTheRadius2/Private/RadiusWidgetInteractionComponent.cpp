@@ -11,6 +11,7 @@ URadiusWidgetInteractionComponent::URadiusWidgetInteractionComponent(const FObje
     this->BeamParticleOpacityName = TEXT("Opacity");
     this->FingerInteractionBeamThreshold = 30.00f;
     this->InteractionDistanceMenu = 1000.00f;
+    this->bCastHover = false;
     this->LinkedMeshComponent = NULL;
     this->OverlappedUiComponent = NULL;
 }

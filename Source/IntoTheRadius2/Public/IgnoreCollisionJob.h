@@ -1,19 +1,22 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "RadiusCollisionActorPair.generated.h"
+#include "IgnoreCollisionJob.generated.h"
 
 class AActor;
 
 USTRUCT(BlueprintType)
-struct FRadiusCollisionActorPair {
+struct FIgnoreCollisionJob {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TWeakObjectPtr<AActor> Actor1;
+    AActor* Actor;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TWeakObjectPtr<AActor> Actor2;
+    AActor* Parent;
     
-    INTOTHERADIUS2_API FRadiusCollisionActorPair();
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
+    bool bAttached;
+    
+    INTOTHERADIUS2_API FIgnoreCollisionJob();
 };
 

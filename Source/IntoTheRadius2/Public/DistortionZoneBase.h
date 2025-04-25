@@ -16,6 +16,8 @@ public:
     
     ADistortionZoneBase(const FObjectInitializer& ObjectInitializer);
 
+    UFUNCTION(BlueprintCallable)
+    void UpdateOverlaps();
 
     // Fix for true pure virtual functions not being implemented
 };

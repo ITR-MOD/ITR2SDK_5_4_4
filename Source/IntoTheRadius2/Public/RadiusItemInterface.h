@@ -40,6 +40,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void SetDenyItemUse(const bool bDeny);
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void SetDenyItemTertiaryUse(const bool bDeny);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void RequestItemChangeCollisionProfile(const bool bAttached);
@@ -73,6 +76,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsDenyItemUse() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool IsDenyItemTertiaryUse() const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool HasDynamicData() const;

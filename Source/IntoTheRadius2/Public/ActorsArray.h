@@ -4,16 +4,14 @@
 
 class AActor;
 
-USTRUCT(Atomic, BlueprintType)
-struct INTOTHERADIUS2_API FActorsArray {
+USTRUCT(BlueprintType)
+struct FActorsArray {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<AActor*> Actors;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<bool> InUseFlags;
-    
-    FActorsArray();
+    TArray<AActor*> Array;
+  
+    INTOTHERADIUS2_API FActorsArray();
+  
 };
 

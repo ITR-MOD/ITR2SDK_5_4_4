@@ -3,10 +3,11 @@
 URadiusIgnoreCollisionSubsystem::URadiusIgnoreCollisionSubsystem() {
 }
 
-void URadiusIgnoreCollisionSubsystem::UpdateIgnoreCollisionForItemActorAttachments(AActor* ItemActor) {
+void URadiusIgnoreCollisionSubsystem::UpdateCollisionIgnores(AActor* Actor, AActor* Parent, bool bAttached) {
 }
 
 void URadiusIgnoreCollisionSubsystem::OnStartLoadLevel(FGameplayTag LevelTag) {
 }
 
-
+void URadiusIgnoreCollisionSubsystem::DoIgnoreCollisionJobs() {
+}

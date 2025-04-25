@@ -7,5 +7,6 @@ enum class ELevelLoadedEventStep : uint8 {
     WorldReady,
     PlayerReady,
     SpawnersReady,
+    ShadersReady,
 };
 

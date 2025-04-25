@@ -17,6 +17,9 @@ class INTOTHERADIUS2_API URadiusGameInstance : public UAdvancedFriendsGameInstan
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TArray<FRadiusSplashDesc> SplashDescriptions;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    FRadiusSplashDesc ShadersCompileSplashDescription;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     bool bIsSaveLoadTemporarilyDisabled;

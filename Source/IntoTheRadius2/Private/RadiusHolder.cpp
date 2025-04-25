@@ -5,7 +5,7 @@
 ARadiusHolder::ARadiusHolder(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("SceneComponent"));
     this->bOnlyOwnerCanInteract = false;
-    this->bPreventCollisionWithAttachedItem = true;
+    this->bPreventCollisionWithAttachedItem = false;
     this->SceneComponent = (USceneComponent*)RootComponent;
     this->InitializeComponent = NULL;
 }

@@ -1,9 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
-#include "RadiusCollisionActorPair.h"
-#include "RadiusCollisionIgnorePairArray.h"
-#include "RadiusCollisionPrimPair.h"
+#include "ActorsArray.h"
+#include "IgnoreCollisionJob.h"
 #include "RadiusGameInstanceSubsystem.h"
 #include "RadiusIgnoreCollisionSubsystem.generated.h"
 
@@ -14,23 +13,24 @@ class INTOTHERADIUS2_API URadiusIgnoreCollisionSubsystem : public URadiusGameIns
     GENERATED_BODY()
 public:
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<FRadiusCollisionActorPair> RadiusActorsIgnoringCollisions;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TMap<FRadiusCollisionPrimPair, FRadiusCollisionIgnorePairArray> RadiusCollisionTrackedPairs;
-    
-    UPROPERTY(EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<TWeakObjectPtr<AActor>> ActorsQueue;
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TMap<AActor*, FActorsArray> IgnoresCache;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TArray<FIgnoreCollisionJob> IgnoreCollisionJobs;
     
 public:
     URadiusIgnoreCollisionSubsystem();
 
     UFUNCTION(BlueprintCallable)
-    void UpdateIgnoreCollisionForItemActorAttachments(AActor* ItemActor);
+    void UpdateCollisionIgnores(AActor* Actor, AActor* Parent, bool bAttached);
     
     UFUNCTION(BlueprintCallable)
     void OnStartLoadLevel(FGameplayTag LevelTag);
+
+private:
+    UFUNCTION(BlueprintCallable)
+    void DoIgnoreCollisionJobs();
     
 };
 

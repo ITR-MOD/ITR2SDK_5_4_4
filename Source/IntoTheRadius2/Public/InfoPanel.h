@@ -26,6 +26,8 @@ public:
 private:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     APawn* OwnerPawn;
+
+protected:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UItemInfo* ItemInfo;

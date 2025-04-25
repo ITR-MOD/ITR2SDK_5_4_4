@@ -1,17 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "RadiusCollisionIgnorePair.generated.h"
+#include "ActorsPoolArray.generated.h"
 
-USTRUCT(BlueprintType)
-struct FRadiusCollisionIgnorePair {
+class AActor;
+
+USTRUCT(Atomic, BlueprintType)
+struct INTOTHERADIUS2_API FActorsPoolArray {
     GENERATED_BODY()
 public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FName BoneName1;
+    TArray<AActor*> Actors;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FName BoneName2;
+    TArray<bool> InUseFlags;
     
-    INTOTHERADIUS2_API FRadiusCollisionIgnorePair();
+    FActorsPoolArray();
 };
 

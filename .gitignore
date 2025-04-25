@@ -15,6 +15,7 @@ UEAssetToolkit-dev/
 ZZ_ue4ssMods/
 ConfigOld/
 Content/
+!/ModDirectorContent/Content/
 output/
 PakStaging/
 ddhud.json
@@ -64,3 +65,6 @@ Plugins/ZenTools
 *.bak
 *.backup
 *.orig
+gamemode.json
+ModDirectorContent.7z
+/PackUtocs

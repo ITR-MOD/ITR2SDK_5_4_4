@@ -3,7 +3,6 @@
 #include "VRBPDatatypes.h"
 #include "ItemConfiguration.h"
 #include "ItemContainerInterface.h"
-#include "PropsCache.h"
 #include "RadiusExplosionReceiver.h"
 #include "RadiusGrippableActorBase.h"
 #include "RadiusItemDelegateGripPrimaryDelegate.h"
@@ -77,11 +76,6 @@ public:
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FRadiusItemDelegateNoParams OnOwnerChanged;
     
-private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FPropsCache CachedProperties;
-    
-public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     UGripMotionControllerComponent* GripControllerPrimary;
     

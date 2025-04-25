@@ -9,7 +9,9 @@ URadiusHolsterComponent::URadiusHolsterComponent(const FObjectInitializer& Objec
     this->bAllowInteractionWhenDisabled = true;
     this->bCanBeArmored = false;
     this->bCanDistanceGripStoredItems = false;
-    this->bPreventCollisionWithAttachedItem = true;
+    this->bPreventCollisionWithAttachedItem = false;
+    this->bUpdateCollisionIgnoresOnAttach = true;
+    this->bUpdateCollisionIgnoresOnDetach = true;
     this->bOnlyGripInOverlapZone = false;
     this->bOnlyDetachTopAttachment = false;
     this->bOnlyGripItemByMainHandSocket = false;

@@ -150,6 +150,14 @@ FGameplayTag UFLHelpers::GetLevelTagFromGateTag(const UObject* WorldContextObjec
     return FGameplayTag{};
 }
 
+TArray<URadiusHandSocketComponent*> UFLHelpers::GetHandSocketsByTags(const AActor* Actor, FGameplayTagContainer GripTagsToInclude, FGameplayTagContainer GripTagsToExclude) {
+    return TArray<URadiusHandSocketComponent*>();
+}
+
+URadiusHandSocketComponent* UFLHelpers::GetHandSocketByName(const AActor* Actor, const FName& SlotName) {
+    return NULL;
+}
+
 FString UFLHelpers::GetHandHolsterName(UGripMotionControllerComponent* Controller) {
     return TEXT("");
 }
