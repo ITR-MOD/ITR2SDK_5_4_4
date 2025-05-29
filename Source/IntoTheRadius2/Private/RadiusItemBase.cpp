@@ -16,8 +16,10 @@ void ARadiusItemBase::Server_ChangeItemDurability_Implementation(const float Del
 void ARadiusItemBase::RetryPlaceContainer() {
 }
 
-void ARadiusItemBase::PostInitializeComponents() {
-}
+//void ARadiusItemBase::PostInitializeComponents()
+//{
+//    Super::PostInitializeComponents(); 
+//}
 
 void ARadiusItemBase::OnParenIDReplicated() {
 }

@@ -1,6 +1,6 @@
 {
 	"FileVersion": 3,
-	"EngineAssociation": "5.4",
+	"EngineAssociation": "{3B2875E0-42D6-534B-3AB8-779C2F2BA082}",
 	"Category": "",
 	"Description": "",
 	"Modules": [
@@ -240,6 +240,38 @@
 		{
 			"Name": "AndroidFileServer",
 			"Enabled": false
+		},
+		{
+			"Name": "UnrealPSKPSA",
+			"Enabled": true
+		},
+		{
+			"Name": "SerializationUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "JsonBlueprintUtilities",
+			"Enabled": true
+		},
+		{
+			"Name": "JsonAsAsset",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetDumper",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetGenerator",
+			"Enabled": true
+		},
+		{
+			"Name": "Alpakit",
+			"Enabled": true
+		},
+		{
+			"Name": "SkeletalMeshModelingTools",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [

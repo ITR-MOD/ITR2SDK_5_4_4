@@ -10,6 +10,7 @@
 #include "RadiusItemDelegateKeyInputDelegate.h"
 #include "RadiusItemDelegateNoParamsDelegate.h"
 #include "RadiusItemDelegateReleasePrimaryDelegate.h"
+#include "GameFramework/Actor.h"
 #include "RadiusItemBase.generated.h"
 
 class UGS_LerpToHand;
@@ -102,8 +103,8 @@ public:
     UFUNCTION(BlueprintCallable)
     void RetryPlaceContainer();
     
-    UFUNCTION(BlueprintCallable)
-    void PostInitializeComponents();
+ //   UFUNCTION()
+ //   virtual void PostInitializeComponents();
     
 private:
     UFUNCTION(BlueprintCallable)
