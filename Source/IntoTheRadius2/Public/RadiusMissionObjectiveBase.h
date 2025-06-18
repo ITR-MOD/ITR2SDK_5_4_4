@@ -1,6 +1,7 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "UObject/Object.h"
+#include "EMissionObjectiveType.h"
 #include "OnObjectiveCompletedDelegate.h"
 #include "RadiusMissionObjectiveBase.generated.h"
 
@@ -40,6 +41,9 @@ protected:
     void OnRep_OwningMission();
     
 public:
+    UFUNCTION(BlueprintCallable)
+    EMissionObjectiveType GetObjectiveType();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     void GetObjectiveDescriptions(FText& ShortDescription, FText& LongDescription);
     

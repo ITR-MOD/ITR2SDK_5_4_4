@@ -21,6 +21,9 @@ void ARadiusItemBase::RetryPlaceContainer() {
 //    Super::PostInitializeComponents(); 
 //}
 
+void ARadiusItemBase::OnReplicatorCreated_Implementation() {
+}
+
 void ARadiusItemBase::OnParenIDReplicated() {
 }
 

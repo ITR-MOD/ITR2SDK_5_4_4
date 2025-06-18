@@ -16,6 +16,10 @@ UNPCConfig::UNPCConfig() {
     this->FoliageCollisionChannel = ECC_WorldStatic;
     this->MaxFogDensity = 50.00f;
     this->MaxFogDistanceCutOff = 20000.00f;
+    this->MinFogDistanceCutOff = 0.00f;
+    this->QuestMaxFogDensity = 50.00f;
+    this->QuestMaxFogDistanceCutOff = 20000.00f;
+    this->QuestMinFogDistanceCutOff = 0.00f;
     this->NotifyDistance = 10000.00f;
     this->TargetWeightModifier = 1.00f;
     this->FactorReductionDelay = 0.50f;

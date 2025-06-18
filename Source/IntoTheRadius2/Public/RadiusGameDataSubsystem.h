@@ -9,7 +9,6 @@
 
 class ARadiusGameDataReplicator;
 class UAvailableMission;
-class UObject;
 class URadiusCommonGameData;
 class URadiusGameData;
 
@@ -129,6 +128,9 @@ public:
     FString GetProfileFolderPath(const int32 ProfileNr, const bool bSinglePlayer) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    static FString GetPaths();
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetMinSaveNumber(const bool bSinglePlayer, const bool bAutosave) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
@@ -143,21 +145,24 @@ public:
     UFUNCTION(BlueprintCallable)
     int32 GetLastProfileNum();
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
-    ARadiusGameDataReplicator* GetGameDataReplicator(const UObject* WorldContextObject) const;
-    
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    ARadiusGameDataReplicator* GetGameDataReplicator() const;
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     URadiusGameData* GetGameData() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     URadiusCommonGameData* GetCommonGameData() const;
     
-    UFUNCTION(BlueprintCallable)
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     static FString GetAbsoluteDataPath();
-    
+
     UFUNCTION(BlueprintCallable)
     void DeleteSave(const int32 ProfileNr, const int32 SaveNr, const bool bAutosave, const bool bSinglePlayer);
-    
+
+    UFUNCTION(BlueprintCallable)
+    void Debug_PrintGameDataInfo();
+
     UFUNCTION(BlueprintCallable)
     bool CreateNewGameData(const int32 ProfileNr, const bool bSinglePlayer, const bool bIsTutorialEnabled, const TMap<FGameplayTag, FGameplayTag>& DifficultySettings, const bool bShouldClearProfile);
     

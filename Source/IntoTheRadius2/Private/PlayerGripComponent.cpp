@@ -46,10 +46,10 @@ void UPlayerGripComponent::FPS_ForceUpdateOverlaps(const EVRHand Hand) {
 void UPlayerGripComponent::ForceGrab(const EVRHand Hand, AActor* Actor) {
 }
 
-void UPlayerGripComponent::ForceDropByHand(EVRHand Hand, const bool bSimulate, const EGripType GripType) {
+void UPlayerGripComponent::ForceDropByHand(EVRHand Hand, const bool bSimulate, const bool bTryAttachItemToMostRelevantHolster, const EGripType GripType) {
 }
 
-void UPlayerGripComponent::ForceDropByActor(AActor* ActorToDrop, const bool bSimulate, const EGripType GripType) {
+void UPlayerGripComponent::ForceDropByActor(AActor* ActorToDrop, const bool bSimulate, const bool bTryAttachItemToMostRelevantHolster, const EGripType GripType) {
 }
 
 void UPlayerGripComponent::ClimbingStepUp() {

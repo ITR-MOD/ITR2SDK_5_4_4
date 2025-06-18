@@ -19,10 +19,16 @@ void URadiusContainerSubsystem::RequestUnbindOnContainerParentChanged(const FStr
 void URadiusContainerSubsystem::RequestUnbindOnContainerChildrenChanged(const FString& ContainerID, const FOnContainerChildrenChanged_ContainerDelegate& Event) {
 }
 
+void URadiusContainerSubsystem::RequestUnbindOnContainerAncestorChanged(const FString& ContainerID, const FOnContainerAncestorChanged_ContainerDelegate& Event) {
+}
+
 void URadiusContainerSubsystem::RequestBindOnContainerParentChanged(const FString& ContainerID, const FOnContainerParentChanged_ContainerDelegate& Event) {
 }
 
 void URadiusContainerSubsystem::RequestBindOnContainerChildrenChanged(const FString& ContainerID, const FOnContainerChildrenChanged_ContainerDelegate& Event) {
+}
+
+void URadiusContainerSubsystem::RequestBindOnContainerAncestorChanged(const FString& ContainerID, const FOnContainerAncestorChanged_ContainerDelegate& Event) {
 }
 
 void URadiusContainerSubsystem::RemoveItemFromTrack(const EVRHand Hand) {
@@ -86,7 +92,7 @@ TMap<FString, UItemContainerData*> URadiusContainerSubsystem::GetContainers() {
     return TMap<FString, UItemContainerData*>();
 }
 
-UObject* URadiusContainerSubsystem::GetContainerObject(const FString& ContainerID) {
+UObject* URadiusContainerSubsystem::GetContainerObject(const FString& ContainerID) const {
     return NULL;
 }
 
@@ -94,8 +100,19 @@ bool URadiusContainerSubsystem::GetAllPlayerItems(AActor* Player, TArray<ARadius
     return false;
 }
 
+TArray<ARadiusItemBase*> URadiusContainerSubsystem::GetAllChildItems(const FString& ParentContainerID) const {
+    return TArray<ARadiusItemBase*>();
+}
+
 TArray<FString> URadiusContainerSubsystem::GetAllChildContainerIDs(const FString& ParentContainerID, const bool bIncludeChildren) const {
     return TArray<FString>();
+}
+
+TArray<ARadiusItemBase*> URadiusContainerSubsystem::GetAllAncestorItems(const FString& ContainerID) const {
+    return TArray<ARadiusItemBase*>();
+}
+
+void URadiusContainerSubsystem::FireOnPlayerContainerChanged(const FString& PlayerID, const FString& ParentID, const FString& ContainerID, const bool bHasAttached) const {
 }
 
 bool URadiusContainerSubsystem::DropHolsteredActor(UObject* Container, AActor* Item) {
@@ -118,5 +135,4 @@ void URadiusContainerSubsystem::AddContainerToContainer(const FString& Container
 
 void URadiusContainerSubsystem::AddAttachedItemToTrack(const EVRHand Hand, AActor* AttachedItem) {
 }
-
 

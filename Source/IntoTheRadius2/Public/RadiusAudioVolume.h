@@ -5,6 +5,7 @@
 #include "RadiusAudioVolume.generated.h"
 
 class UAudioComponent;
+class USoundBase;
 class USoundCue;
 
 UCLASS(Blueprintable)
@@ -16,6 +17,9 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     USoundCue* SoundCue;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    USoundBase* Sound;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     float FadeInDuration;

@@ -13,10 +13,10 @@ void URadiusBulletTracerComponent::Suspend(const bool bSuspend) {
 void URadiusBulletTracerComponent::Stop() {
 }
 
-void URadiusBulletTracerComponent::Start() {
+void URadiusBulletTracerComponent::Start(const bool bIsPlayer) {
 }
 
-void URadiusBulletTracerComponent::Initialize(const bool ForceTracer, const FGameplayTag AmmoTypeID) {
+void URadiusBulletTracerComponent::Initialize(const FGameplayTag AmmoTypeID) {
 }
 
 

@@ -154,6 +154,10 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void ChangeHungerAndNotifyAll(const float Delta);
-    
+ 
+private:
+    UFUNCTION(BlueprintCallable)
+    void ChangeDamageMitigatingItems(const FString& PlayerUId, const FString& ContainerID, const FString& ItemId, const bool bHasAttached);
+
 };
 

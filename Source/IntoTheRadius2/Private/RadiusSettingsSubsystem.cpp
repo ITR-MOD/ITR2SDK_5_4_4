@@ -47,6 +47,18 @@ void URadiusSettingsSubsystem::SetTabletOnLeft(const bool bValue) const {
 void URadiusSettingsSubsystem::SetSubtitlesOn(const bool bIsOn) const {
 }
 
+void URadiusSettingsSubsystem::SetSpectatorStability(const float Stability) const {
+}
+
+void URadiusSettingsSubsystem::SetSpectatorFOV(const float FOV) const {
+}
+
+void URadiusSettingsSubsystem::SetSpectatorEnabled(const bool bIsOn) const {
+}
+
+void URadiusSettingsSubsystem::SetSpectatorBrightness(const float Brightness) const {
+}
+
 void URadiusSettingsSubsystem::SetSpeakersName(const FString& NewSpeakersName) const {
 }
 
@@ -105,6 +117,9 @@ void URadiusSettingsSubsystem::SetHolsterOffset(const float Value) const {
 }
 
 void URadiusSettingsSubsystem::SetHighlightDroppedItems(const bool Value) const {
+}
+
+void URadiusSettingsSubsystem::SetHideHelmet(const bool Value) const {
 }
 
 void URadiusSettingsSubsystem::SetHeightMeasurementSystem(ERadiusHeightMeasurementSystem HeightMeasurementSystem) const {
@@ -199,6 +214,10 @@ bool URadiusSettingsSubsystem::IsHighlightDroppedItemsOn() const {
     return false;
 }
 
+bool URadiusSettingsSubsystem::IsHideHelmet() const {
+    return false;
+}
+
 bool URadiusSettingsSubsystem::IsGrippingTap() const {
     return false;
 }
@@ -245,6 +264,22 @@ ETurningType URadiusSettingsSubsystem::GetTurningType() const {
 
 EQualityType URadiusSettingsSubsystem::GetTextures() const {
     return EQualityType::Low;
+}
+
+float URadiusSettingsSubsystem::GetSpectatorStability() const {
+    return 0.0f;
+}
+
+float URadiusSettingsSubsystem::GetSpectatorFOV() const {
+    return 0.0f;
+}
+
+bool URadiusSettingsSubsystem::GetSpectatorEnabled() const {
+    return false;
+}
+
+float URadiusSettingsSubsystem::GetSpectatorBrightness() const {
+    return 0.0f;
 }
 
 FString URadiusSettingsSubsystem::GetSpeakersName() const {

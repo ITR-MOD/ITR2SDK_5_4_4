@@ -1,14 +1,16 @@
 #include "PlayerVoiceChatActor.h"
-#include "Components/SceneComponent.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=AudioComponent -FallbackName=AudioComponent
+#include "Components/AudioComponent.h"
+#include "MicrophoneSpeakComponent.h"
 #include "Net/UnrealNetwork.h"
 
 APlayerVoiceChatActor::APlayerVoiceChatActor(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bReplicates = true;
     const FProperty* p_RemoteRole = GetClass()->FindPropertyByName("RemoteRole");
     (*p_RemoteRole->ContainerPtrToValuePtr<TEnumAsByte<ENetRole>>(this)) = ROLE_SimulatedProxy;
-    this->RootComponent = CreateDefaultSubobject<USceneComponent>(TEXT("RootScene"));
-    this->RootSceneComponent = (USceneComponent*)RootComponent;
-    this->MicrophoneSpeakComponent = NULL;
+    this->RootSceneComponent = NULL;
+    this->MicrophoneSpeakComponent = CreateDefaultSubobject<UMicrophoneSpeakComponent>(TEXT("MicrophoneComponent"));
+    this->VoiceAudioComponent = CreateDefaultSubobject<UAudioComponent>(TEXT("VoiceAudioSpeaker"));
     this->ownerPlayerState = NULL;
     this->idVoiceChat = 0;
     this->playerName = TEXT("Player");
@@ -23,22 +25,22 @@ APlayerVoiceChatActor::APlayerVoiceChatActor(const FObjectInitializer& ObjectIni
 void APlayerVoiceChatActor::setOverrideLocallySourceEffectPath(bool enableSourceEffect, bool overrideLocally, const FString& _pathToSourceEffectAsset) {
 }
 
-void APlayerVoiceChatActor::setOverrideLocallyAttenuationPath(bool enableAttenuation, bool overrideLocally, const FString& _pathToAttenuationAsset) {
+void APlayerVoiceChatActor::setOverrideLocallyAttenuationPath(bool enableAttenuation, bool overrideLocally, TSoftObjectPtr<USoundAttenuation> NewAttenuation) {
+}
+
+void APlayerVoiceChatActor::SetMaxProximityRangeOnServer(float _maxProximityRange) {
 }
 
 void APlayerVoiceChatActor::setLocallyMultiplierVolume(float multiplierVolume) {
 }
 
+void APlayerVoiceChatActor::SetAllowUseProximityOnServer(bool _allowUseRange) {
+}
+
 void APlayerVoiceChatActor::ServerSetSourceChainEffect(bool enableSourceChainEffect, const FString& _pathToSourceChainEffect) {
 }
 
-void APlayerVoiceChatActor::ServerSetMaxProximityRange(float _maxProximityRange) {
-}
-
-void APlayerVoiceChatActor::ServerSetAttenuation(bool enableAttenuation, const FString& _pathToAttenuationAsset) {
-}
-
-void APlayerVoiceChatActor::ServerSetAllowUseProximity(bool _allowUseRange) {
+void APlayerVoiceChatActor::ServerSetAttenuation(bool bEnableAttenuation, TSoftObjectPtr<USoundAttenuation> NewAttenuation) {
 }
 
 void APlayerVoiceChatActor::ServerSetAllowUseGlobal(bool _allowUseGlobal) {
@@ -50,28 +52,25 @@ void APlayerVoiceChatActor::ServerRemoveChannel(int32 channelToRemove) {
 void APlayerVoiceChatActor::ServerAddChannel(int32 channelToAdd) {
 }
 
-void APlayerVoiceChatActor::RPCServerUpdatePosAudioComp_Implementation(FVector worldPos, FRotator worldRotation) {
+void APlayerVoiceChatActor::Server_SetSourceChainEffectPath_Implementation(const FString& _pathToSourceChainEffectAsset) {
 }
 
-void APlayerVoiceChatActor::RPCClientSetSourceChainEffectPath_Implementation(const FString& _pathToSourceChainEffectAsset) {
+void APlayerVoiceChatActor::Server_SetPlayerName_Implementation(const FString& Name) {
 }
 
-void APlayerVoiceChatActor::RPCClientSetPlayerName_Implementation(const FString& Name) {
+void APlayerVoiceChatActor::Server_SetIsMicrophoneOn_Implementation(bool _isMicrophoneOn) {
 }
 
-void APlayerVoiceChatActor::RPCClientSetMicrophoneVolume_Implementation(float Volume) {
+void APlayerVoiceChatActor::Server_SetAttenuation_Implementation(const USoundAttenuation* NewAttenuation) {
 }
 
-void APlayerVoiceChatActor::RPCClientSetIsMicrophoneOn_Implementation(bool _isMicrophoneOn) {
+void APlayerVoiceChatActor::Server_RequestRemoveChannel_Implementation(int32 channelToRemove) {
 }
 
-void APlayerVoiceChatActor::RPCClientSetAttenuationPath_Implementation(const FString& _attenuationPath) {
+void APlayerVoiceChatActor::Server_RequestAddChannel_Implementation(int32 channelToAdd) {
 }
 
-void APlayerVoiceChatActor::RPCClientAskRemoveChannel_Implementation(int32 channelToRemove) {
-}
-
-void APlayerVoiceChatActor::RPCClientAskAddChannel_Implementation(int32 channelToAdd) {
+void APlayerVoiceChatActor::Server_ChangeMicrophoneVolume_Implementation(float Volume) {
 }
 
 void APlayerVoiceChatActor::RepNotifyVoiceVolume() {
@@ -83,16 +82,19 @@ void APlayerVoiceChatActor::RepNotifySourceEffectAsset() {
 void APlayerVoiceChatActor::RepNotifyPlayerName() {
 }
 
-void APlayerVoiceChatActor::RepNotifyMicComp() {
-}
-
 void APlayerVoiceChatActor::RepNotifyIsMicrophoneOn() {
 }
 
-void APlayerVoiceChatActor::RepNotifyAttenuationAsset() {
+void APlayerVoiceChatActor::OnRep_MicrophoneSpeakComponent() {
 }
 
-void APlayerVoiceChatActor::muteAudio(bool isMute) {
+void APlayerVoiceChatActor::OnRep_Attenuation() {
+}
+
+void APlayerVoiceChatActor::MuteAudio(bool isMute) {
+}
+
+void APlayerVoiceChatActor::Multicast_UpdatePosAudioComp_Implementation(FVector worldPos, FRotator worldRotation) {
 }
 
 bool APlayerVoiceChatActor::IsMicrophoneComponentValid() {
@@ -116,7 +118,7 @@ void APlayerVoiceChatActor::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>
     DOREPLIFETIME(APlayerVoiceChatActor, IsMicrophoneOn);
     DOREPLIFETIME(APlayerVoiceChatActor, voiceVolume);
     DOREPLIFETIME(APlayerVoiceChatActor, radioChannelSubscribed);
-    DOREPLIFETIME(APlayerVoiceChatActor, pathToAttenuationAsset);
+    DOREPLIFETIME(APlayerVoiceChatActor, Attenuation);
     DOREPLIFETIME(APlayerVoiceChatActor, pathToSourceChainEffectAsset);
 }
 

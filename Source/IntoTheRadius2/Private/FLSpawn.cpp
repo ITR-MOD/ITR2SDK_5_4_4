@@ -28,11 +28,11 @@ AActor* UFLSpawn::SpawnAnomaly(const UObject* WorldContextObject, const FGamepla
     return NULL;
 }
 
-FTransform UFLSpawn::ProjectTransformOnGround(const UObject* WorldContextObject, const FTransform& Transform) {
+FTransform UFLSpawn::ProjectTransformOnGround(const UObject* WorldContextObject, const FTransform& Transform, bool& bSuccess) {
     return FTransform{};
 }
 
-FVector UFLSpawn::ProjectPointOnGround(const UObject* WorldContextObject, const FVector& Location) {
+FVector UFLSpawn::ProjectPointOnGround(const UObject* WorldContextObject, const FVector& Location, bool& bSuccess) {
     return FVector{};
 }
 

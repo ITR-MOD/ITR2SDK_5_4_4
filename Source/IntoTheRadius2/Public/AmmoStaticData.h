@@ -6,7 +6,7 @@
 #include "AmmoStaticData.generated.h"
 
 class UCurveFloat;
-class UObject;
+class UPhysicalMaterial;
 class UStaticMesh;
 
 USTRUCT(BlueprintType)
@@ -56,7 +56,7 @@ public:
     float AmmoPenetration;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    TArray<TSoftObjectPtr<UObject>> PenetrableMaterials;
+    TArray<TSoftObjectPtr<UPhysicalMaterial>> PenetrableMaterials;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     int32 BulletBounceMax;

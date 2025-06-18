@@ -77,6 +77,7 @@ UPlayerConfig::UPlayerConfig() {
     this->CrouchAnimationDuration = 1.00f;
     this->GripSphereRadius = 11.00f;
     this->DistanceGripSpeedCoeff = 1.00f;
+    this->DistanceGripDurationInfluenceSpeedCoeff = 0.01f;
     this->DistanceGripRadius = 30.00f;
     this->DistanceGripDeadZone = 50.00f;
     this->DistanceGripLength = 300.00f;
@@ -88,6 +89,7 @@ UPlayerConfig::UPlayerConfig() {
     this->SubtitlesTimeToReact = 1.00f;
     this->SubtitlesRotationSpeed = 100.00f;
     this->SaveSubtitleDuration = 3.00f;
+    this->VoiceChatDistance = 7000.00f;
 }
 
 float UPlayerConfig::GetStaminaConsumptionIncreasePercentFromTotalWeight(const float TotalWeight) const {

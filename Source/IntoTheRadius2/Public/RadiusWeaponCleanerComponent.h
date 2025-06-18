@@ -4,6 +4,7 @@
 #include "Components/ActorComponent.h"
 #include "EPaintShape.h"
 #include "Templates/SubclassOf.h"
+#include "VertexPositions.h"
 #include "RadiusWeaponCleanerComponent.generated.h"
 
 class ARadiusItemBase;
@@ -20,6 +21,12 @@ public:
 protected:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ARadiusItemBase* RadiusItemOwner;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TMap<USkeletalMeshComponent*, FVertexPositions> SkeletalMeshPositions;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TMap<UStaticMeshComponent*, FVertexPositions> StaticMeshPositions;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     TArray<USkeletalMeshComponent*> SkeletalMeshComponents;

@@ -32,7 +32,6 @@ public class IntoTheRadius2 : ModuleRules {
             "Sentry",
             "SlateCore",
             "UMG",
-            "UniversalVoiceChatPro",
             "VRExpansionPlugin",
             "XRBase",
         });

@@ -62,6 +62,10 @@ USingleMissionConfig* UAvailableMission::GetMissionConfig(bool bSkipLegacy) {
     return NULL;
 }
 
+EMissionObjectiveType UAvailableMission::GetCurrentObjectiveType() const {
+    return EMissionObjectiveType::None;
+}
+
 int32 UAvailableMission::GetCurrentObjectiveIndex() const {
     return 0;
 }

@@ -1,18 +1,19 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/NoExportTypes.h"
-#include "UObject/NoExportTypes.h"
-#include "GameFramework/Actor.h"
-#include "Engine/EngineTypes.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Rotator -FallbackName=Rotator
+//CROSS-MODULE INCLUDE V2: -ModuleName=CoreUObject -ObjectName=Vector -FallbackName=Vector
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=Actor -FallbackName=Actor
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=EEndPlayReason -FallbackName=EEndPlayReason
 #include "PlayerVoiceChatActor.generated.h"
 
 class APlayerState;
+class UAudioComponent;
 class UMicrophoneSpeakComponent;
 class USceneComponent;
 class USoundAttenuation;
 
 UCLASS(Blueprintable)
-class UNIVERSALVOICECHATPRO_API APlayerVoiceChatActor : public AActor {
+class INTOTHERADIUS2_API APlayerVoiceChatActor : public AActor {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FPlayerNameReceived, const FString&, Name);
@@ -21,8 +22,11 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
     USceneComponent* RootSceneComponent;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, ReplicatedUsing=RepNotifyMicComp, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, Transient, ReplicatedUsing=OnRep_MicrophoneSpeakComponent, meta=(AllowPrivateAccess=true))
     UMicrophoneSpeakComponent* MicrophoneSpeakComponent;
+    
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Instanced, meta=(AllowPrivateAccess=true))
+    UAudioComponent* VoiceAudioComponent;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     APlayerState* ownerPlayerState;
@@ -42,10 +46,7 @@ public:
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, Transient, meta=(AllowPrivateAccess=true))
     TArray<int32> radioChannelSubscribed;
     
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=RepNotifyAttenuationAsset, meta=(AllowPrivateAccess=true))
-    FString pathToAttenuationAsset;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=OnRep_Attenuation, meta=(AllowPrivateAccess=true))
     TSoftObjectPtr<USoundAttenuation> Attenuation;
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, Transient, ReplicatedUsing=RepNotifySourceEffectAsset, meta=(AllowPrivateAccess=true))
@@ -77,22 +78,22 @@ public:
     void setOverrideLocallySourceEffectPath(bool enableSourceEffect, bool overrideLocally, const FString& _pathToSourceEffectAsset);
     
     UFUNCTION(BlueprintCallable)
-    void setOverrideLocallyAttenuationPath(bool enableAttenuation, bool overrideLocally, const FString& _pathToAttenuationAsset);
+    void setOverrideLocallyAttenuationPath(bool enableAttenuation, bool overrideLocally, TSoftObjectPtr<USoundAttenuation> NewAttenuation);
+    
+    UFUNCTION(BlueprintCallable)
+    void SetMaxProximityRangeOnServer(float _maxProximityRange);
     
     UFUNCTION(BlueprintCallable)
     void setLocallyMultiplierVolume(float multiplierVolume);
     
     UFUNCTION(BlueprintCallable)
+    void SetAllowUseProximityOnServer(bool _allowUseRange);
+    
+    UFUNCTION(BlueprintCallable)
     void ServerSetSourceChainEffect(bool enableSourceChainEffect, const FString& _pathToSourceChainEffect);
     
     UFUNCTION(BlueprintCallable)
-    void ServerSetMaxProximityRange(float _maxProximityRange);
-    
-    UFUNCTION(BlueprintCallable)
-    void ServerSetAttenuation(bool enableAttenuation, const FString& _pathToAttenuationAsset);
-    
-    UFUNCTION(BlueprintCallable)
-    void ServerSetAllowUseProximity(bool _allowUseRange);
+    void ServerSetAttenuation(bool bEnableAttenuation, TSoftObjectPtr<USoundAttenuation> NewAttenuation);
     
     UFUNCTION(BlueprintCallable)
     void ServerSetAllowUseGlobal(bool _allowUseGlobal);
@@ -103,29 +104,26 @@ public:
     UFUNCTION(BlueprintCallable)
     void ServerAddChannel(int32 channelToAdd);
     
-    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
-    void RPCServerUpdatePosAudioComp(FVector worldPos, FRotator worldRotation);
+    UFUNCTION(BlueprintCallable, Reliable, Server)
+    void Server_SetSourceChainEffectPath(const FString& _pathToSourceChainEffectAsset);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void RPCClientSetSourceChainEffectPath(const FString& _pathToSourceChainEffectAsset);
+    void Server_SetPlayerName(const FString& Name);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void RPCClientSetPlayerName(const FString& Name);
+    void Server_SetIsMicrophoneOn(bool _isMicrophoneOn);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void RPCClientSetMicrophoneVolume(float Volume);
+    void Server_SetAttenuation(const USoundAttenuation* NewAttenuation);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void RPCClientSetIsMicrophoneOn(bool _isMicrophoneOn);
+    void Server_RequestRemoveChannel(int32 channelToRemove);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void RPCClientSetAttenuationPath(const FString& _attenuationPath);
+    void Server_RequestAddChannel(int32 channelToAdd);
     
     UFUNCTION(BlueprintCallable, Reliable, Server)
-    void RPCClientAskRemoveChannel(int32 channelToRemove);
-    
-    UFUNCTION(BlueprintCallable, Reliable, Server)
-    void RPCClientAskAddChannel(int32 channelToAdd);
+    void Server_ChangeMicrophoneVolume(float Volume);
     
     UFUNCTION(BlueprintCallable)
     void RepNotifyVoiceVolume();
@@ -137,16 +135,19 @@ public:
     void RepNotifyPlayerName();
     
     UFUNCTION(BlueprintCallable)
-    void RepNotifyMicComp();
-    
-    UFUNCTION(BlueprintCallable)
     void RepNotifyIsMicrophoneOn();
     
     UFUNCTION(BlueprintCallable)
-    void RepNotifyAttenuationAsset();
+    void OnRep_MicrophoneSpeakComponent();
     
     UFUNCTION(BlueprintCallable)
-    void muteAudio(bool isMute);
+    void OnRep_Attenuation();
+    
+    UFUNCTION(BlueprintCallable)
+    void MuteAudio(bool isMute);
+    
+    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
+    void Multicast_UpdatePosAudioComp(FVector worldPos, FRotator worldRotation);
     
     UFUNCTION(BlueprintCallable)
     bool IsMicrophoneComponentValid();

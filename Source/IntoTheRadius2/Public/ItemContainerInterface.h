@@ -124,6 +124,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool CanBeArmored() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    bool CanAcceptItem(AActor* ItemActor);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void BindOnHighlightChanged(const FOnHighlightChanged& Event);
@@ -132,8 +135,8 @@ public:
     bool AllowsInteraction();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    bool AllowsGripping(FGameplayTagContainer GripTags, UGripMotionControllerComponent* MotionController);
-    
+    bool AllowsGripping(const FGameplayTagContainer& QueryGripTags, UGripMotionControllerComponent* MotionController);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void AddContainerToGameData();
     

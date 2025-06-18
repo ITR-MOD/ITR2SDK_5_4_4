@@ -26,10 +26,14 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsQABuild();
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsMobilePlatform();
+
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
     static bool IsGameRunning(UObject* WorldContextObject);
-    
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsEditor();
     

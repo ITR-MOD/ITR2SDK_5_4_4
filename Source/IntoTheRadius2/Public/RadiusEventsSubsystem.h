@@ -16,6 +16,7 @@
 #include "OnItemSecondaryGrippedDelegate.h"
 #include "OnLevelLoadStepDelegateDelegate.h"
 #include "OnMoneyChangedDelegateDelegate.h"
+#include "OnPlayerContainerChangedDelegateDelegate.h"
 #include "OnPlayerDiedDelegateDelegate.h"
 #include "OnPlayerKillDelegateDelegate.h"
 #include "OnSleepDelegateDelegate.h"
@@ -87,9 +88,6 @@ public:
     FOnArtefactNestDestroyed OnArtefactNestDestroyed;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FNoParamsDelegate OnFirstPlayerEnteredShop;
-    
-    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOneParamBoolDelegate OnSwitchLoadingScreen;
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
@@ -151,6 +149,10 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FContainerIDParamDelegate OnPlayerInventoryChanged;
+
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    FOnPlayerContainerChangedDelegate OnPlayerContainerChanged;
+
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FInstanceIDParamDelegate OnItemStackChange;
@@ -249,6 +251,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void FireOnPlayerDeathPointsChanged() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void FireOnPlayerContainerChanged(const FString& PlayerID, const FString& ParentID, const FString& ContainerID, const bool bHasAttached) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void FireOnPlayerConnected(const FString& UniqueNetIdString) const;
@@ -297,9 +302,6 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void FireOnGameDataLoaded() const;
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure=false)
-    void FireOnFirstPlayerEnteredShop() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void FireOnFinishLoadLevel() const;

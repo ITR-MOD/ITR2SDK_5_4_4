@@ -3,6 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/Object.h"
 #include "GameplayTagContainer.h"
+#include "EMissionObjectiveType.h"
 #include "EMissionUIState.h"
 #include "OnMissionStateUpdateDelegate.h"
 #include "AvailableMission.generated.h"
@@ -96,6 +97,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     USingleMissionConfig* GetMissionConfig(bool bSkipLegacy);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    EMissionObjectiveType GetCurrentObjectiveType() const;
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     int32 GetCurrentObjectiveIndex() const;
     

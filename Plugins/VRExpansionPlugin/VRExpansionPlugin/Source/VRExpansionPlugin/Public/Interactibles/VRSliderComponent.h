@@ -29,7 +29,8 @@ enum class EVRInteractibleSliderDropBehavior : uint8
 	Stay,
 
 	/** Retains momentum on release*/
-	RetainMomentum
+	RetainMomentum,
+	ReturnToStart,
 };
 
 /** Delegate for notification when the slider state changes. */

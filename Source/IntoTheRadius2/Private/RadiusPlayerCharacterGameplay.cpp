@@ -27,6 +27,9 @@ ARadiusPlayerStateGameplay* ARadiusPlayerCharacterGameplay::GetRadiusPlayerState
     return NULL;
 }
 
+FVector ARadiusPlayerCharacterGameplay::GetPawnViewLocation_BP_Implementation() const {
+    return FVector{};
+}
 
 void ARadiusPlayerCharacterGameplay::Delayed_InitializeContainer_Internal() {
 }

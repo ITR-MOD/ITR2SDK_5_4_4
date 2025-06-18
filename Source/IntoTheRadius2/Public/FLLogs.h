@@ -12,13 +12,22 @@ public:
     UFLLogs();
 
     UFUNCTION(BlueprintCallable)
+    static void LogZak(UObject* LogContextObject, const FString& Message);
+
+    UFUNCTION(BlueprintCallable)
     static void LogHolster(UObject* LogContextObject, const FString& Message);
-    
-    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
+
+    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
     static void LogD(UObject* WorldContextObject, const FString& Message);
-    
+
+    UFUNCTION(BlueprintCallable)
+    static void LogCannedCanFish(UObject* LogContextObject, const FString& Message);
+
     UFUNCTION(BlueprintCallable)
     static void LogBackpack(UObject* LogContextObject, const FString& Message);
-    
+
+    UFUNCTION(BlueprintCallable)
+    static void LogAmmoBox(UObject* LogContextObject, const FString& Message);
+
 };
 

@@ -35,6 +35,12 @@ void UFLGeneral::SetLightMapType(UPrimitiveComponent* Component, const ELightmap
 void UFLGeneral::SetLightAffectsWorld(ULightComponent* Component, bool bAffects) {
 }
 
+void UFLGeneral::SetDesiredMaxDrawDistance(UPrimitiveComponent* Component, const float NewDrawDistance) {
+}
+
+void UFLGeneral::SetCurrentMaxDrawDistance(UPrimitiveComponent* Component, const float NewDrawDistance) {
+}
+
 void UFLGeneral::SetCanEverAffectNavigation(UActorComponent* Component, bool bRelevant) {
 }
 
@@ -111,6 +117,9 @@ bool UFLGeneral::MinMaxFloat_Include(const FMinMaxFloat Range, const float Value
     return false;
 }
 
+void UFLGeneral::MarkActorModified(AActor* Actor) {
+}
+
 FVector2D UFLGeneral::MapRangeUnclamped(const FVector2D Value, const FVector2D InRangeA, const FVector2D InRangeB, const FVector2D OutRangeA, const FVector2D OutRangeB) {
     return FVector2D{};
 }
@@ -126,6 +135,10 @@ void UFLGeneral::KillActorsByClass(const UObject* WorldContextObject, TSubclassO
 }
 
 void UFLGeneral::KillActor(AActor* Actor) {
+}
+
+bool UFLGeneral::IsLogsEnabled() {
+    return false;
 }
 
 bool UFLGeneral::IsInBounds(const FVector& Point, const FTransform& BoxWorldTransform, const FVector& BoxExtent, const bool bIgnoreZ) {
@@ -203,7 +216,14 @@ float UFLGeneral::FindDistanceAlongSplineClosestToLocation(const USplineComponen
     return 0.0f;
 }
 
+void UFLGeneral::DrawTextToCanvas(UCanvas* Canvas, const FSlateFontInfo& FontInfo, const FString& RenderText, const FVector2D ScreenPosition, const FVector2D Scale, const FLinearColor RenderColor, const float Kerning, const FLinearColor ShadowColor, const FVector2D ShadowOffset, const bool bCentreX, const bool bCentreY, const bool bOutlined, const FLinearColor OutlineColor) {
+}
+
 void UFLGeneral::DestroyActorDynamicData(AActor* Actor, const bool bDetachHolstered, const bool bKillActor) {
+}
+
+bool UFLGeneral::CheckIfPointInsideCone(const FVector& Point, const FVector& ConeTip, const FVector& ConeAxis, const float ConeBaseRadius, const float ConeHeight) {
+    return false;
 }
 
 bool UFLGeneral::CheckDistanceExceed(const FVector& FromPoint, const TArray<FVector>& ToLocations, const float DistanceSquared) {

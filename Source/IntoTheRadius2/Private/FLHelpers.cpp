@@ -55,11 +55,19 @@ FString UFLHelpers::NetIdToString(const FUniqueNetIdRepl& NetId) {
     return TEXT("");
 }
 
+bool UFLHelpers::NeedMissionItemBeep(AActor* Item) {
+    return false;
+}
+
 bool UFLHelpers::IsWidgetUnderWidget(const UWidget* WidgetUpper, const UWidget* WidgetBelow) {
     return false;
 }
 
 bool UFLHelpers::IsWidgetUnderCenterOfAnotherWidget(const UWidget* Widget, const UWidget* WidgetWithCenter) {
+    return false;
+}
+
+bool UFLHelpers::IsWaterMaterial(const UObject* WorldContextObject, const UPhysicalMaterial* Material) {
     return false;
 }
 
@@ -164,6 +172,10 @@ FString UFLHelpers::GetHandHolsterName(UGripMotionControllerComponent* Controlle
 
 EVRHand UFLHelpers::GetHandByController(UGripMotionControllerComponent* Controller) {
     return EVRHand::Left;
+}
+
+TArray<FGameplayTag> UFLHelpers::GetGameplayTagChildren(const FGameplayTag& Tag) {
+    return TArray<FGameplayTag>();
 }
 
 FGameplayTag UFLHelpers::GetFireModeFromTags(const UObject* WorldContextObject, const TArray<FGameplayTag>& Tags) {

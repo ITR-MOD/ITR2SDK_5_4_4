@@ -36,12 +36,12 @@ public:
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     static AActor* SpawnAnomaly(const UObject* WorldContextObject, const FGameplayTag TypeTag, const FTransform& Transform);
     
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
-    static FTransform ProjectTransformOnGround(const UObject* WorldContextObject, const FTransform& Transform);
-    
-    UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
-    static FVector ProjectPointOnGround(const UObject* WorldContextObject, const FVector& Location);
-    
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    static FTransform ProjectTransformOnGround(const UObject* WorldContextObject, const FTransform& Transform, bool& bSuccess);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    static FVector ProjectPointOnGround(const UObject* WorldContextObject, const FVector& Location, bool& bSuccess);
+
     UFUNCTION(BlueprintCallable)
     static void FinishSpawning(AActor* Actor, const FTransform& Transform);
     

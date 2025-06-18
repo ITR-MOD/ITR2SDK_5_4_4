@@ -19,8 +19,8 @@ public:
     virtual void Launch() PURE_VIRTUAL(Launch,);
     
     UFUNCTION(BlueprintCallable)
-    virtual void InitializeWithData(const FAmmoStaticData& InAmmoStaticData, const float InVelocity, const float DamageModifier, const bool bForceTracer, AActor* Owner, const TArray<AActor*>& InActorsToIgnore) PURE_VIRTUAL(InitializeWithData,);
-    
+    virtual void InitializeWithData(const FAmmoStaticData& InAmmoStaticData, const float InVelocity, const float DamageModifier, AActor* Owner, const TArray<AActor*>& InActorsToIgnore) PURE_VIRTUAL(InitializeWithData, );
+
     UFUNCTION(BlueprintCallable)
     virtual void Initialize(URadiusProjectileInfo* ProjectileInfo) PURE_VIRTUAL(Initialize,);
     

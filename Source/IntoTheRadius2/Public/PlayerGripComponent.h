@@ -74,11 +74,11 @@ public:
     void ForceGrab(const EVRHand Hand, AActor* Actor);
     
     UFUNCTION(BlueprintCallable)
-    void ForceDropByHand(EVRHand Hand, const bool bSimulate, const EGripType GripType);
-    
+    void ForceDropByHand(EVRHand Hand, const bool bSimulate, const bool bTryAttachItemToMostRelevantHolster, const EGripType GripType);
+
     UFUNCTION(BlueprintCallable)
-    void ForceDropByActor(AActor* ActorToDrop, const bool bSimulate, const EGripType GripType);
-    
+    void ForceDropByActor(AActor* ActorToDrop, const bool bSimulate, const bool bTryAttachItemToMostRelevantHolster, const EGripType GripType);
+
     UFUNCTION(BlueprintCallable)
     void ClimbingStepUp();
     

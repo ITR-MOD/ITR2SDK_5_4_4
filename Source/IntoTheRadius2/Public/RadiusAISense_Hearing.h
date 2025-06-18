@@ -22,8 +22,8 @@ protected:
 public:
     URadiusAISense_Hearing();
 
-    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static void ReportNoiseEvent(UObject* WorldContextObject, FVector NoiseLocation, float Loudness, AActor* Instigator, float MaxRange, FName Tag);
-    
+    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    static void ReportNoiseEvent(UObject* WorldContextObject, const FVector NoiseLocation, const float Loudness, AActor* Instigator, const float MaxRange, const FName Tag);
+
 };
 

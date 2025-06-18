@@ -148,6 +148,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsDisabled() const;
     
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    bool bVerticalGripDisablesSecondaryHS;
+
     UFUNCTION(BlueprintCallable)
     void InitializeContainer_Internal();
     
@@ -158,8 +161,8 @@ public:
     void HandleHolsterEndOverlap(AActor* OtherActor, UPrimitiveComponent* OverlapComponent);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    void HandleHolsteredActorGrip(UGripMotionControllerComponent* MotionController, const FBPActorGripInformation& GripInfo);
-    
+    void HandleHolsteredActorGrip(UGripMotionControllerComponent* MotionController, const FBPActorGripInformation& GripInfo, AActor* GrippedActor);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void HandleHolsterBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OverlapComponent);
     
@@ -180,8 +183,8 @@ private:
     void Continue_UpdateReplicatedHolsteredActor();
     
     UFUNCTION(BlueprintCallable)
-    void Continue_SpawnSavedItems(AActor* ItemActor, URadiusItemDynamicData* ItemDynamicData);
-    
+    void Continue_SpawnSavedItems(ARadiusGrippableActorBase* ItemActor);
+
     UFUNCTION(BlueprintCallable)
     void Continue_InstantHolsterActor(URadiusHolsterComponent* HolsterComponent);
     

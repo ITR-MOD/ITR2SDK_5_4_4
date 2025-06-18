@@ -49,6 +49,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void RemoveGameplayTag(const FGameplayTag TagToRemove);
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void ReleaseNetOwnership();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void ReconfigureItem();
@@ -79,6 +82,9 @@ public:
 
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool IsDenyItemTertiaryUse() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void InstantReleaseNetOwnership();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     bool HasDynamicData() const;
@@ -115,6 +121,9 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     float GetDurability() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    UObject* GetAttachParent() const;
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     TArray<AActor*> GetAttachments(const bool bIncludeChildren, const bool bIncludeHolders);
@@ -135,8 +144,8 @@ public:
     bool ForceEndSecondaryGrip();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    bool ForceEndPrimaryGrip();
-    
+    bool ForceEndPrimaryGrip(bool bTryAttachItemToMostRelevantHolster);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void CreateBlockedDynamicDataOnGrip();
     
@@ -153,8 +162,8 @@ public:
     bool CanTakeDamage();
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    bool CanGrip(const FGameplayTagContainer& GripTags, UGripMotionControllerComponent* MotionController, TArray<FGameplayTag>& GripTagToCanGrip);
-    
+    bool CanGrip(const FGameplayTagContainer& QueryGripTags, UGripMotionControllerComponent* MotionController, FGameplayTagContainer& AllowedGripTags);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void BlockCreatingDynamicDataOnGrip();
     

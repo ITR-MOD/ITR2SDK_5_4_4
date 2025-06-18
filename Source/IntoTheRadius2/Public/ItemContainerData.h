@@ -3,6 +3,7 @@
 #include "UObject/Object.h"
 #include "UObject/NoExportTypes.h"
 #include "ERadiusItemContainerType.h"
+#include "OnContainerAncestorChanged_ContainerMulticastDelegateDelegate.h"
 #include "OnContainerChildrenChanged_ContainerMulticastDelegateDelegate.h"
 #include "OnContainerParentChanged_ContainerMulticastDelegateDelegate.h"
 #include "ItemContainerData.generated.h"
@@ -28,7 +29,10 @@ public:
     
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnContainerParentChanged_ContainerMulticastDelegate OnParentChangedDelegate;
-    
+
+    UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    FOnContainerAncestorChanged_ContainerMulticastDelegate OnAncestorChangedDelegate;
+
     UPROPERTY(BlueprintAssignable, BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     FOnContainerChildrenChanged_ContainerMulticastDelegate OnChildrenChangedDelegate;
     

@@ -10,6 +10,7 @@
 #include "RadiusConfigurationAssetBase.h"
 #include "SystemConfig.generated.h"
 
+class UPhysicalMaterial;
 class USoundAttenuation;
 class USoundBase;
 class USoundClass;
@@ -127,6 +128,10 @@ public:
     
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     TMap<FGameplayTag, FVector> TagToBulletColor;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TArray<TSoftObjectPtr<UPhysicalMaterial>> WaterMaterials;
+
     
     USystemConfig();
 

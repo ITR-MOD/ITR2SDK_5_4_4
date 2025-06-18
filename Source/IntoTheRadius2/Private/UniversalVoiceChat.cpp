@@ -32,7 +32,7 @@ bool UUniversalVoiceChat::VoiceChatSetSourceChainEffectPath(bool enableSourceCha
 void UUniversalVoiceChat::VoiceChatSetSomeoneOverrideLocallySourceEffectPath(const UObject* WorldContextObject, bool enableSourceEffect, bool overrideLocally, const FString& _pathToSourceEffectAsset, APlayerState* playerToOverride) {
 }
 
-void UUniversalVoiceChat::VoiceChatSetSomeoneOverrideLocallyAttenuationPath(const UObject* WorldContextObject, bool enableAttenuation, bool overrideLocally, const FString& _pathToAttenuationAsset, APlayerState* playerToOverride) {
+void UUniversalVoiceChat::VoiceChatSetSomeoneOverrideLocallyAttenuationPath(const UObject* WorldContextObject, bool enableAttenuation, bool overrideLocally, TSoftObjectPtr<USoundAttenuation> NewAttenuation, APlayerState* playerToOverride) {
 }
 
 void UUniversalVoiceChat::VoiceChatSetSomeoneLocallyMultiplierVolume(const UObject* WorldContextObject, float multiplierVolume, APlayerState* playerToOverride) {
@@ -61,7 +61,7 @@ void UUniversalVoiceChat::VoiceChatSetGlobalVolume(float globalVolume) {
 void UUniversalVoiceChat::VoiceChatSetDefaultTickRateUpdateLocation(float tickRate) {
 }
 
-bool UUniversalVoiceChat::VoiceChatSetAttenuationPath(bool enableAttenuation, const FString& _attenuationPath) {
+bool UUniversalVoiceChat::VoiceChatSetAttenuation(bool enableAttenuation, USoundAttenuation* NewAttenuation) {
     return false;
 }
 

@@ -5,10 +5,11 @@
 
 class UAudioComponent;
 class UMicrophoneSpeakComponent;
+class USoundAttenuation;
 class USoundWaveProcedural;
 
 UCLASS(Blueprintable, ClassGroup=Custom, meta=(BlueprintSpawnableComponent))
-class UNIVERSALVOICECHATPRO_API UMicrophoneSpeakComponent : public UActorComponent {
+class INTOTHERADIUS2_API UMicrophoneSpeakComponent : public UActorComponent {
     GENERATED_BODY()
 public:
     DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FMicrophoneVolumeReceived, float, Volume);
@@ -44,31 +45,28 @@ public:
     void setOverrideLocallySourceEffectPath(bool enableSourceEffect, bool overrideLocally, const FString& _pathToSourceEffectAsset);
     
     UFUNCTION(BlueprintCallable)
-    void setOverrideLocallyAttenuationPath(bool enableAttenuation, bool overrideLocally, const FString& _pathToAttenuationAsset);
+    void setOverrideLocallyAttenuationPath(bool enableAttenuation, bool overrideLocally, TSoftObjectPtr<USoundAttenuation> NewAttenuation);
     
     UFUNCTION(BlueprintCallable)
     void setLocallyMultiplierVolume(float multiplierVolume);
     
     UFUNCTION(BlueprintCallable)
-    void setAttenuationAssetPath(bool enableAttenuation, const FString& _pathToAttenuationAsset);
-    
-    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
-    void RPCServerBroadcastVoiceData(const TArray<uint8>& Data, int32 SampleRate, int32 NumChannels, int32 PCMSize, int32 opusFramePerSec);
-    
-    UFUNCTION(BlueprintCallable, Client, Unreliable)
-    void RPCReceiveVoiceFromServer(UMicrophoneSpeakComponent* compToOutputVoice, const TArray<uint8>& dataEncoded, int32 SampleRate, int32 NumChannels, int32 PCMSize, int32 opusFramePerSec);
+    void SetAttenuation(bool bEnableAttenuation, TSoftObjectPtr<USoundAttenuation> NewAttenuation);
     
     UFUNCTION(BlueprintCallable, Server, Unreliable)
-    void RPCClientTransmitVoiceData(const TArray<uint8>& Data, int32 SampleRate, int32 NumChannels, int32 PCMSize, int32 opusFramePerSec, bool _isGlobal, const TArray<int32>& _radioChannel, bool _useRange, float _maxRange);
+    void Server_TransmitVoiceData(const TArray<uint8>& Data, int32 SampleRate, int32 NumChannels, int32 PCMSize, int32 opusFramePerSec, bool _isGlobal, const TArray<int32>& _radioChannel, bool _useRange, float _maxRange);
     
     UFUNCTION(BlueprintCallable)
     void payloadReceivedVoiceData(const TArray<uint8>& dataEncoded, int32 SampleRate, int32 NumChannels, int32 PCMSize, int32 opusFramePerSec);
     
     UFUNCTION(BlueprintCallable)
-    void muteAudio(bool _isMuted);
+    void MuteAudio(bool _isMuted);
+    
+    UFUNCTION(BlueprintCallable, NetMulticast, Unreliable)
+    void Multicast_VoiceData(const TArray<uint8>& Data, int32 SampleRate, int32 NumChannels, int32 PCMSize, int32 opusFramePerSec);
     
     UFUNCTION(BlueprintCallable)
-    bool isPlayingAudioVoice();
+    bool IsPlayingAudioVoice();
     
     UFUNCTION(BlueprintCallable)
     bool initAudioResources(int32 voiceSampleRate, int32 _voiceNumChannels, int32 opusFramesPerSec);
@@ -78,6 +76,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void endSpeaking();
+    
+    UFUNCTION(BlueprintCallable, Client, Unreliable)
+    void Client_ReceiveVoiceFromServer(UMicrophoneSpeakComponent* compToOutputVoice, const TArray<uint8>& dataEncoded, int32 SampleRate, int32 NumChannels, int32 PCMSize, int32 opusFramePerSec);
     
 };
 

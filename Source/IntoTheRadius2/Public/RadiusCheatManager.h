@@ -13,8 +13,8 @@ public:
     void TeleportPlayer(const float X, const float Y, const float Z, const float Yaw) const;
     
     UFUNCTION(BlueprintCallable, Exec)
-    void SaveGame(const int32 SaveNr) const;
-    
+    void SaveGame(const int32 ProfileNr, const int32 SaveNr) const;
+
     UFUNCTION(BlueprintCallable, Exec)
     void PrintPlayerRotation() const;
     
@@ -28,8 +28,8 @@ public:
     void MainMenu() const;
     
     UFUNCTION(BlueprintCallable, Exec)
-    void LoadGame(const int32 ProfileNr, const int32 SaveNr, const bool bAutosave) const;
-    
+    void LoadGame(const int32 ProfileNr, const int32 SaveNr, const bool bSinglePlayer) const;
+
     UFUNCTION(BlueprintCallable, Exec)
     void DeleteSave(const int32 ProfileNr, const bool bSinglePlayer, const int32 SaveNr, const bool bAutosave) const;
     

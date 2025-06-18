@@ -3,6 +3,7 @@
 #include "UObject/NoExportTypes.h"
 #include "VRBPDatatypes.h"
 #include "OnAnyContainerChangedDelegate.h"
+#include "OnContainerAncestorChanged_ContainerDelegateDelegate.h"
 #include "OnContainerChildrenChanged_ContainerDelegateDelegate.h"
 #include "OnContainerParentChanged_ContainerDelegateDelegate.h"
 #include "RadiusTickableWorldSubsystem.h"
@@ -59,11 +60,17 @@ public:
     void RequestUnbindOnContainerChildrenChanged(const FString& ContainerID, const FOnContainerChildrenChanged_ContainerDelegate& Event);
     
     UFUNCTION(BlueprintCallable)
+    void RequestUnbindOnContainerAncestorChanged(const FString& ContainerID, const FOnContainerAncestorChanged_ContainerDelegate& Event);
+
+    UFUNCTION(BlueprintCallable)
     void RequestBindOnContainerParentChanged(const FString& ContainerID, const FOnContainerParentChanged_ContainerDelegate& Event);
     
     UFUNCTION(BlueprintCallable)
     void RequestBindOnContainerChildrenChanged(const FString& ContainerID, const FOnContainerChildrenChanged_ContainerDelegate& Event);
     
+    UFUNCTION(BlueprintCallable)
+    void RequestBindOnContainerAncestorChanged(const FString& ContainerID, const FOnContainerAncestorChanged_ContainerDelegate& Event);
+
     UFUNCTION(BlueprintCallable)
     void RemoveItemFromTrack(const EVRHand Hand);
     
@@ -114,16 +121,25 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     TMap<FString, UItemContainerData*> GetContainers();
-    
-    UFUNCTION(BlueprintCallable)
-    UObject* GetContainerObject(const FString& ContainerID);
-    
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    UObject* GetContainerObject(const FString& ContainerID) const;
+  
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool GetAllPlayerItems(AActor* Player, TArray<ARadiusItemBase*>& Items) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
+    TArray<ARadiusItemBase*> GetAllChildItems(const FString& ParentContainerID) const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
     TArray<FString> GetAllChildContainerIDs(const FString& ParentContainerID, const bool bIncludeChildren) const;
-    
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    TArray<ARadiusItemBase*> GetAllAncestorItems(const FString& ContainerID) const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void FireOnPlayerContainerChanged(const FString& PlayerID, const FString& ParentID, const FString& ContainerID, const bool bHasAttached) const;
+
     UFUNCTION(BlueprintCallable)
     bool DropHolsteredActor(UObject* Container, AActor* Item);
     

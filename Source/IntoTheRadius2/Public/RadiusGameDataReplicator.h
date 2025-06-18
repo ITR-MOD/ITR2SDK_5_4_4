@@ -67,6 +67,9 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetAccessLevel(int32 NewLevel);
+
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void PrintReplicatorData() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void PrintItemDynamicData() const;

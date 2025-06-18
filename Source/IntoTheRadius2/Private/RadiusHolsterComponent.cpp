@@ -16,6 +16,7 @@ URadiusHolsterComponent::URadiusHolsterComponent(const FObjectInitializer& Objec
     this->bOnlyDetachTopAttachment = false;
     this->bOnlyGripItemByMainHandSocket = false;
     this->bIsDisabled = false;
+    this->bVerticalGripDisablesSecondaryHS = false;
     this->OptionalCollision = NULL;
     this->HolsteredActor = NULL;
     this->HolsterCacheForReps = NULL;
@@ -73,7 +74,7 @@ bool URadiusHolsterComponent::HasHolsteredActor() {
 void URadiusHolsterComponent::HandleHolsterEndOverlap_Implementation(AActor* OtherActor, UPrimitiveComponent* OverlapComponent) {
 }
 
-void URadiusHolsterComponent::HandleHolsteredActorGrip_Implementation(UGripMotionControllerComponent* MotionController, const FBPActorGripInformation& GripInfo) {
+void URadiusHolsterComponent::HandleHolsteredActorGrip_Implementation(UGripMotionControllerComponent* MotionController, const FBPActorGripInformation& GripInfo, AActor* GrippedActor) {
 }
 
 void URadiusHolsterComponent::HandleHolsterBeginOverlap_Implementation(AActor* OtherActor, UPrimitiveComponent* OverlapComponent) {
@@ -94,7 +95,7 @@ void URadiusHolsterComponent::DoInstantHolster() {
 void URadiusHolsterComponent::Continue_UpdateReplicatedHolsteredActor() {
 }
 
-void URadiusHolsterComponent::Continue_SpawnSavedItems(AActor* ItemActor, URadiusItemDynamicData* ItemDynamicData) {
+void URadiusHolsterComponent::Continue_SpawnSavedItems(ARadiusGrippableActorBase* ItemActor) {
 }
 
 void URadiusHolsterComponent::Continue_InstantHolsterActor(URadiusHolsterComponent* HolsterComponent) {
@@ -111,7 +112,7 @@ void URadiusHolsterComponent::CallHolsterChange_Internal(const FString& ChangedC
 
 void URadiusHolsterComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-    
+
     DOREPLIFETIME(URadiusHolsterComponent, HolsteredActor);
 }
 

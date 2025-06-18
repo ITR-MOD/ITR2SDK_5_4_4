@@ -25,6 +25,9 @@ public:
     bool bIsSaveLoadTemporarilyDisabled;
     
 private:
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TArray<FRadiusSplashDesc> SplashDescriptionsShown;
+
     UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
     ULevelLoadedEventTrigger* LevelLoadedEventTrigger;
     
@@ -39,6 +42,9 @@ private:
     
 public:
     URadiusGameInstance(const FObjectInitializer& ObjectInitializer);
+
+    UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
+    void RenderPSORemainingPercent(const int32 Percent);
 
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     void OnGameStart();

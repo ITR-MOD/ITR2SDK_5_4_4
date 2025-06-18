@@ -62,8 +62,8 @@ public:
     bool IsSlotForHand(EVRHand Hand) const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
-    FGameplayTagContainer GetSocketGrabTag() const;
-    
+    FGameplayTagContainer GetSocketGripTags() const;
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FVector GetHandSocketWorldLocation() const;
     

@@ -45,6 +45,9 @@ void URadiusEventsSubsystem::FireOnPlayerDisconnected(const FString& UniqueNetId
 void URadiusEventsSubsystem::FireOnPlayerDeathPointsChanged() const {
 }
 
+void URadiusEventsSubsystem::FireOnPlayerContainerChanged(const FString& PlayerID, const FString& ParentID, const FString& ContainerID, const bool bHasAttached) const {
+}
+
 void URadiusEventsSubsystem::FireOnPlayerConnected(const FString& UniqueNetIdString) const {
 }
 
@@ -91,9 +94,6 @@ void URadiusEventsSubsystem::FireOnGameDataSaved() const {
 }
 
 void URadiusEventsSubsystem::FireOnGameDataLoaded() const {
-}
-
-void URadiusEventsSubsystem::FireOnFirstPlayerEnteredShop() const {
 }
 
 void URadiusEventsSubsystem::FireOnFinishLoadLevel() const {

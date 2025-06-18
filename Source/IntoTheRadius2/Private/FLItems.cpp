@@ -1,6 +1,10 @@
 #include "FLItems.h"
+#include "Templates/SubclassOf.h"
 
 UFLItems::UFLItems() {
+}
+
+void UFLItems::SwitchActorVisibilityOnOwner(AActor* Actor, const bool bNewHidden, const bool bIncludeChildren) {
 }
 
 void UFLItems::PackItemsToBox(UPrimitiveComponent* CollisionComp, TArray<AActor*> ActorsToPack, bool bExcludeNonFit, bool bProjectOnGround, TArray<AActor*>& Excluded) {
@@ -18,6 +22,10 @@ bool UFLItems::IsItemAttachedToItem(UObject* WorldContext, UObject* Container) {
 
 bool UFLItems::IsInPlayerInventory(UObject* WorldContext, const FString& ContainerID) {
     return false;
+}
+
+URadiusHolsterComponent* UFLItems::GetTopParentItemActorHolster(AActor* Actor, TSubclassOf<AActor> TopParentClass) {
+    return NULL;
 }
 
 AActor* UFLItems::GetTopParentItemActor(AActor* Actor) {

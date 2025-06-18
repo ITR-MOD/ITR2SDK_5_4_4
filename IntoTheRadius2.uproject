@@ -11,15 +11,14 @@
 			"AdditionalDependencies": [
 				"Engine",
 				"UMG",
-				"VRExpansionPlugin",
-				"UniversalVoiceChatPro"
+				"VRExpansionPlugin"
 			]
 		}
 	],
 	"Plugins": [
 		{
 			"Name": "UniversalVoiceChatPro",
-			"Enabled": true,
+			"Enabled": false,
 			"MarketplaceURL": "com.epicgames.launcher://ue/marketplace/product/eda7d893311147d1b7a6e8084be096c4"
 		},
 		{
@@ -240,6 +239,38 @@
 		{
 			"Name": "AndroidFileServer",
 			"Enabled": false
+		},
+		{
+			"Name": "UnrealPSKPSA",
+			"Enabled": true
+		},
+		{
+			"Name": "SerializationUtils",
+			"Enabled": true
+		},
+		{
+			"Name": "JsonBlueprintUtilities",
+			"Enabled": true
+		},
+		{
+			"Name": "JsonAsAsset",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetDumper",
+			"Enabled": true
+		},
+		{
+			"Name": "AssetGenerator",
+			"Enabled": true
+		},
+		{
+			"Name": "Alpakit",
+			"Enabled": false
+		},
+		{
+			"Name": "SkeletalMeshModelingTools",
+			"Enabled": true
 		}
 	],
 	"TargetPlatforms": [

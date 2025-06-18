@@ -6,6 +6,7 @@
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
 #include "UObject/NoExportTypes.h"
+#include "Styling/SlateStyle.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Engine/EngineTypes.h"
 #include "GameplayTagContainer.h"
@@ -19,6 +20,7 @@ class AActor;
 class APlayerController;
 class UActorComponent;
 class UAnimMontage;
+class UCanvas;
 class UExponentialHeightFogComponent;
 class ULightComponent;
 class UObject;
@@ -64,6 +66,12 @@ public:
     UFUNCTION(BlueprintCallable)
     static void SetLightAffectsWorld(ULightComponent* Component, bool bAffects);
     
+    UFUNCTION(BlueprintCallable)
+    static void SetDesiredMaxDrawDistance(UPrimitiveComponent* Component, const float NewDrawDistance);
+
+    UFUNCTION(BlueprintCallable)
+    static void SetCurrentMaxDrawDistance(UPrimitiveComponent* Component, const float NewDrawDistance);
+
     UFUNCTION(BlueprintCallable)
     static void SetCanEverAffectNavigation(UActorComponent* Component, bool bRelevant);
     
@@ -127,6 +135,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool MinMaxFloat_Include(const FMinMaxFloat Range, const float Value);
     
+    UFUNCTION(BlueprintCallable)
+    static void MarkActorModified(AActor* Actor);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static FVector2D MapRangeUnclamped(const FVector2D Value, const FVector2D InRangeA, const FVector2D InRangeB, const FVector2D OutRangeA, const FVector2D OutRangeB);
     
@@ -142,6 +153,9 @@ public:
     UFUNCTION(BlueprintCallable)
     static void KillActor(AActor* Actor);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool IsLogsEnabled();
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool IsInBounds(const FVector& Point, const FTransform& BoxWorldTransform, const FVector& BoxExtent, const bool bIgnoreZ);
     
@@ -203,8 +217,14 @@ public:
     static float FindDistanceAlongSplineClosestToLocation(const USplineComponent* Spline, const FVector& Location);
     
     UFUNCTION(BlueprintCallable)
+    static void DrawTextToCanvas(UCanvas* Canvas, const FSlateFontInfo& FontInfo, const FString& RenderText, const FVector2D ScreenPosition, const FVector2D Scale, const FLinearColor RenderColor, const float Kerning, const FLinearColor ShadowColor, const FVector2D ShadowOffset, const bool bCentreX, const bool bCentreY, const bool bOutlined, const FLinearColor OutlineColor);
+
+    UFUNCTION(BlueprintCallable)
     static void DestroyActorDynamicData(AActor* Actor, const bool bDetachHolstered, const bool bKillActor);
-    
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static bool CheckIfPointInsideCone(const FVector& Point, const FVector& ConeTip, const FVector& ConeAxis, const float ConeBaseRadius, const float ConeHeight);
+
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static bool CheckDistanceExceed(const FVector& FromPoint, const TArray<FVector>& ToLocations, const float DistanceSquared);
     

@@ -68,6 +68,10 @@ public:
     
     UFUNCTION(BlueprintCallable)
     void SetNPCState(ENPCState InNPCState);
+
+    UFUNCTION(BlueprintCallable)
+    void SetNpcDead();
+
     
 private:
     UFUNCTION(BlueprintCallable, Server, Unreliable)

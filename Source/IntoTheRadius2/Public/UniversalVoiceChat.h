@@ -1,6 +1,6 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
 #include "DelegateDeleteVoiceChatActorDelegate.h"
 #include "DelegateMyVoiceChatActorReadyDelegate.h"
 #include "DelegateNewVoiceChatActorDelegate.h"
@@ -10,9 +10,10 @@
 class APlayerState;
 class APlayerVoiceChatActor;
 class UObject;
+class USoundAttenuation;
 
 UCLASS(Blueprintable)
-class UNIVERSALVOICECHATPRO_API UUniversalVoiceChat : public UBlueprintFunctionLibrary {
+class INTOTHERADIUS2_API UUniversalVoiceChat : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UUniversalVoiceChat();
@@ -42,7 +43,7 @@ public:
     void VoiceChatSetSomeoneOverrideLocallySourceEffectPath(const UObject* WorldContextObject, bool enableSourceEffect, bool overrideLocally, const FString& _pathToSourceEffectAsset, APlayerState* playerToOverride);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    void VoiceChatSetSomeoneOverrideLocallyAttenuationPath(const UObject* WorldContextObject, bool enableAttenuation, bool overrideLocally, const FString& _pathToAttenuationAsset, APlayerState* playerToOverride);
+    void VoiceChatSetSomeoneOverrideLocallyAttenuationPath(const UObject* WorldContextObject, bool enableAttenuation, bool overrideLocally, TSoftObjectPtr<USoundAttenuation> NewAttenuation, APlayerState* playerToOverride);
     
     UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
     void VoiceChatSetSomeoneLocallyMultiplierVolume(const UObject* WorldContextObject, float multiplierVolume, APlayerState* playerToOverride);
@@ -69,7 +70,7 @@ public:
     static void VoiceChatSetDefaultTickRateUpdateLocation(float tickRate);
     
     UFUNCTION(BlueprintCallable)
-    static bool VoiceChatSetAttenuationPath(bool enableAttenuation, const FString& _attenuationPath);
+    static bool VoiceChatSetAttenuation(bool enableAttenuation, USoundAttenuation* NewAttenuation);
     
     UFUNCTION(BlueprintCallable)
     static bool VoiceChatRemoveChannel(int32 channelToRemove);

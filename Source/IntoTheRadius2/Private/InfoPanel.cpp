@@ -14,7 +14,7 @@ AInfoPanel::AInfoPanel(const FObjectInitializer& ObjectInitializer) : Super(Obje
 void AInfoPanel::UpdateTransform(const FVector NewLocation, const FRotator NewRotation) {
 }
 
-void AInfoPanel::ShowPlayerInfo(URadiusDataComponent* DataComponent) {
+void AInfoPanel::ShowPlayerInfo() {
 }
 
 void AInfoPanel::ShowItemInfo(URadiusDataComponent* DataComponent) {

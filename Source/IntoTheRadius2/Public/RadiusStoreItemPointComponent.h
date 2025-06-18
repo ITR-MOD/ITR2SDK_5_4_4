@@ -3,7 +3,6 @@
 #include "UObject/NoExportTypes.h"
 #include "Components/SceneComponent.h"
 #include "Engine/TimerHandle.h"
-#include "Engine/TimerHandle.h"
 #include "GameplayTagContainer.h"
 #include "VRBPDatatypes.h"
 #include "OnItemTakenDelegateDelegate.h"
@@ -11,6 +10,7 @@
 #include "RadiusStoreItemPointComponent.generated.h"
 
 class ARadiusItemBase;
+class ARadiusStoreVolume;
 class UAttachmentConfig;
 class UGripMotionControllerComponent;
 
@@ -40,21 +40,27 @@ public:
     int32 AccessLevelNeeded;
     
 private:
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FTimerDynamicDelegate RespawnTimer_Del;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta=(AllowPrivateAccess=true))
-    FTimerHandle TH_RespawnTimer;
-    
-    UPROPERTY(BlueprintReadWrite, EditAnywhere, Replicated, meta=(AllowPrivateAccess=true))
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    FTimerHandle TryUpdateLockTimerHandle;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    FTimerHandle RespawnTimerHandle;
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, ReplicatedUsing = OnRep_CurrentItem, meta = (AllowPrivateAccess = true))
     ARadiusItemBase* CurrentItem;
-    
+
+    UPROPERTY(BlueprintReadWrite, EditAnywhere, meta = (AllowPrivateAccess = true))
+    TArray<ARadiusStoreVolume*> StoreVolumes;
+
 public:
     URadiusStoreItemPointComponent(const FObjectInitializer& ObjectInitializer);
 
     virtual void GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const override;
 
 private:
+    UFUNCTION(BlueprintCallable)
+    void UpdateItemVisibility();
+
     UFUNCTION(BlueprintCallable)
     void UpdateItemLock(int32 Unused);
     
@@ -66,6 +72,9 @@ public:
     void ResetRespawn();
     
 private:
+    UFUNCTION(BlueprintCallable)
+    void OnRep_CurrentItem();
+
     UFUNCTION(BlueprintCallable)
     void ItemTaken(UGripMotionControllerComponent* Controller, FBPActorGripInformation GripInfo);
     

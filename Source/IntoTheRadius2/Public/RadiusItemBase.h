@@ -105,7 +105,10 @@ public:
     
  //   UFUNCTION()
  //   virtual void PostInitializeComponents();
-    
+protected:
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    void OnReplicatorCreated();
+
 private:
     UFUNCTION(BlueprintCallable)
     void OnParenIDReplicated();

@@ -7,6 +7,7 @@
 #include "GearConfig.h"
 #include "ItemConfiguration.h"
 #include "RadiusItemStaticData.h"
+#include "Templates/SubclassOf.h"
 #include "WeaponStaticData.h"
 #include "FLItems.generated.h"
 
@@ -17,6 +18,7 @@ class UGripMotionControllerComponent;
 class UMeshComponent;
 class UObject;
 class UPrimitiveComponent;
+class URadiusHolsterComponent;
 class URadiusItemDynamicData;
 class USceneComponent;
 
@@ -25,6 +27,9 @@ class INTOTHERADIUS2_API UFLItems : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UFLItems();
+
+    UFUNCTION(BlueprintCallable)
+    static void SwitchActorVisibilityOnOwner(AActor* Actor, const bool bNewHidden, const bool bIncludeChildren);
 
     UFUNCTION(BlueprintCallable)
     static void PackItemsToBox(UPrimitiveComponent* CollisionComp, TArray<AActor*> ActorsToPack, bool bExcludeNonFit, bool bProjectOnGround, TArray<AActor*>& Excluded);
@@ -41,6 +46,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContext"))
     static bool IsInPlayerInventory(UObject* WorldContext, const FString& ContainerID);
     
+    UFUNCTION(BlueprintCallable)
+    static URadiusHolsterComponent* GetTopParentItemActorHolster(AActor* Actor, TSubclassOf<AActor> TopParentClass);
+
     UFUNCTION(BlueprintCallable)
     static AActor* GetTopParentItemActor(AActor* Actor);
     

@@ -23,7 +23,7 @@ bool URadiusHandSocketComponent::IsSlotForHand(EVRHand Hand) const {
     return false;
 }
 
-FGameplayTagContainer URadiusHandSocketComponent::GetSocketGrabTag() const {
+FGameplayTagContainer URadiusHandSocketComponent::GetSocketGripTags() const {
     return FGameplayTagContainer{};
 }
 

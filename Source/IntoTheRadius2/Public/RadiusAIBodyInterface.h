@@ -10,6 +10,7 @@
 class AActor;
 class UAnimMontage;
 class UPrimitiveComponent;
+class UReloadCallbackProxy;
 
 UINTERFACE(Blueprintable)
 class URadiusAIBodyInterface : public UInterface {
@@ -32,8 +33,8 @@ public:
     void SetGroupId(const uint8 Value);
     
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
-    void Reload();
-    
+    void Reload(UReloadCallbackProxy* CallbackProxy);
+
     UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
     void NotifyStoppedSeeingTarget(const AActor* Target) const;
     

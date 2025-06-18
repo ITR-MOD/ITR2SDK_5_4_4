@@ -24,6 +24,7 @@ class APlayerState;
 class UDataTable;
 class UGripMotionControllerComponent;
 class UObject;
+class UPhysicalMaterial;
 class UPrimitiveComponent;
 class URadiusHandSocketComponent;
 class URadiusItemDynamicData;
@@ -88,11 +89,17 @@ public:
     static FString NetIdToString(const FUniqueNetIdRepl& NetId);
     
     UFUNCTION(BlueprintCallable)
+    static bool NeedMissionItemBeep(AActor* Item);
+
+    UFUNCTION(BlueprintCallable)
     static bool IsWidgetUnderWidget(const UWidget* WidgetUpper, const UWidget* WidgetBelow);
     
     UFUNCTION(BlueprintCallable)
     static bool IsWidgetUnderCenterOfAnotherWidget(const UWidget* Widget, const UWidget* WidgetWithCenter);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure, meta = (WorldContext = "WorldContextObject"))
+    static bool IsWaterMaterial(const UObject* WorldContextObject, const UPhysicalMaterial* Material);
+
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static bool IsValidLevelTag(const UObject* WorldContextObject, const FGameplayTag LevelTag);
     
@@ -171,6 +178,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure)
     static EVRHand GetHandByController(UGripMotionControllerComponent* Controller);
     
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    static TArray<FGameplayTag> GetGameplayTagChildren(const FGameplayTag& Tag);
+
     UFUNCTION(BlueprintCallable, BlueprintPure, meta=(WorldContext="WorldContextObject"))
     static FGameplayTag GetFireModeFromTags(const UObject* WorldContextObject, const TArray<FGameplayTag>& Tags);
     

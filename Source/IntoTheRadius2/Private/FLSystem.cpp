@@ -22,6 +22,10 @@ bool UFLSystem::IsQABuild() {
     return false;
 }
 
+bool UFLSystem::IsMobilePlatform() {
+    return false;
+}
+
 bool UFLSystem::IsGameRunning(UObject* WorldContextObject) {
     return false;
 }

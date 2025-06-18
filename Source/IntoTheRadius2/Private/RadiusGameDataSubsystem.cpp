@@ -83,6 +83,10 @@ FString URadiusGameDataSubsystem::GetProfileFolderPath(const int32 ProfileNr, co
     return TEXT("");
 }
 
+FString URadiusGameDataSubsystem::GetPaths() {
+    return TEXT("");
+}
+
 int32 URadiusGameDataSubsystem::GetMinSaveNumber(const bool bSinglePlayer, const bool bAutosave) const {
     return 0;
 }
@@ -103,7 +107,7 @@ int32 URadiusGameDataSubsystem::GetLastProfileNum() {
     return 0;
 }
 
-ARadiusGameDataReplicator* URadiusGameDataSubsystem::GetGameDataReplicator(const UObject* WorldContextObject) const {
+ARadiusGameDataReplicator* URadiusGameDataSubsystem::GetGameDataReplicator() const {
     return NULL;
 }
 
@@ -120,6 +124,9 @@ FString URadiusGameDataSubsystem::GetAbsoluteDataPath() {
 }
 
 void URadiusGameDataSubsystem::DeleteSave(const int32 ProfileNr, const int32 SaveNr, const bool bAutosave, const bool bSinglePlayer) {
+}
+
+void URadiusGameDataSubsystem::Debug_PrintGameDataInfo() {
 }
 
 bool URadiusGameDataSubsystem::CreateNewGameData(const int32 ProfileNr, const bool bSinglePlayer, const bool bIsTutorialEnabled, const TMap<FGameplayTag, FGameplayTag>& DifficultySettings, const bool bShouldClearProfile) {

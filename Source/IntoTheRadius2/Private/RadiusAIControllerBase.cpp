@@ -22,6 +22,9 @@ void ARadiusAIControllerBase::UpdatePriorityTarget() {
 void ARadiusAIControllerBase::SetNPCState(ENPCState InNPCState) {
 }
 
+void ARadiusAIControllerBase::SetNpcDead() {
+}
+
 void ARadiusAIControllerBase::Server_ApplyPointDamage_Implementation(AActor* Target, const float Damage, const FVector& HitFromDirection, const FHitResult& HitInfo, AController* EventInstigator, AActor* DamageCauser, TSubclassOf<UDamageType> DamageTypeClass) {
 }
 

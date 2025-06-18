@@ -38,8 +38,8 @@ public:
     ARadiusBulletProjectile(const FObjectInitializer& ObjectInitializer);
 
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
-    void OnSpawnImpact(const FHitResult& Hit, const float ShotDistance, const float Scale, const bool IsCritical, const bool IsArmor);
-    
+    void OnSpawnImpact(const FHitResult& Hit, const float ShotDistance, const float Scale, const bool IsCritical, const bool IsArmor, const bool bWasPenetrated);
+
     UFUNCTION(BlueprintCallable)
     void OnHit(const FHitResult& Hit);
     

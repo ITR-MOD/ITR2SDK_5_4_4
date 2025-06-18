@@ -42,8 +42,8 @@ public:
     void UpdateTransform(const FVector NewLocation, const FRotator NewRotation);
     
     UFUNCTION(BlueprintCallable)
-    void ShowPlayerInfo(URadiusDataComponent* DataComponent);
-    
+    void ShowPlayerInfo();
+ 
     UFUNCTION(BlueprintCallable)
     void ShowItemInfo(URadiusDataComponent* DataComponent);
     

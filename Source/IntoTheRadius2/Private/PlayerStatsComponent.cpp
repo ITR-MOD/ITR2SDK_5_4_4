@@ -96,6 +96,9 @@ void UPlayerStatsComponent::ChangeStaminaAndNotifyAll(const float Delta) {
 void UPlayerStatsComponent::ChangeHungerAndNotifyAll(const float Delta) {
 }
 
+void UPlayerStatsComponent::ChangeDamageMitigatingItems(const FString& PlayerUId, const FString& ContainerID, const FString& ItemId, const bool bHasAttached) {
+}
+
 void UPlayerStatsComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
     

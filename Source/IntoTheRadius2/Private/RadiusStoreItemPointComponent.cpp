@@ -9,6 +9,9 @@ URadiusStoreItemPointComponent::URadiusStoreItemPointComponent(const FObjectInit
     this->CurrentItem = NULL;
 }
 
+void URadiusStoreItemPointComponent::UpdateItemVisibility() {
+}
+
 void URadiusStoreItemPointComponent::UpdateItemLock(int32 Unused) {
 }
 
@@ -16,6 +19,9 @@ void URadiusStoreItemPointComponent::RespawnActor() {
 }
 
 void URadiusStoreItemPointComponent::ResetRespawn() {
+}
+
+void URadiusStoreItemPointComponent::OnRep_CurrentItem() {
 }
 
 void URadiusStoreItemPointComponent::ItemTaken(UGripMotionControllerComponent* Controller, FBPActorGripInformation GripInfo) {
@@ -27,7 +33,7 @@ ARadiusItemBase* URadiusStoreItemPointComponent::GetCurrentItem() const {
 
 void URadiusStoreItemPointComponent::GetLifetimeReplicatedProps(TArray<FLifetimeProperty>& OutLifetimeProps) const {
     Super::GetLifetimeReplicatedProps(OutLifetimeProps);
-    
+
     DOREPLIFETIME(URadiusStoreItemPointComponent, CurrentItem);
 }
 

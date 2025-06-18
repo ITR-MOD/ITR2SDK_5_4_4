@@ -61,6 +61,9 @@ protected:
     ARadiusPlayerStateGameplay* GetRadiusPlayerStateGameplay();
     
 public:
+    UFUNCTION(BlueprintCallable, BlueprintNativeEvent)
+    FVector GetPawnViewLocation_BP() const;
+
     UFUNCTION(BlueprintCallable, BlueprintImplementableEvent)
     TArray<FGameplayTag> GetAllAutoReturnHolsters() const;
     

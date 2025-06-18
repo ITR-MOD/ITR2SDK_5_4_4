@@ -29,10 +29,10 @@ public:
     // Fix for true pure virtual functions not being implemented
     UFUNCTION(BlueprintCallable)
     void Launch() override PURE_VIRTUAL(Launch,);
-    
+
     UFUNCTION(BlueprintCallable)
-    void InitializeWithData(const FAmmoStaticData& InAmmoStaticData, const float InVelocity, const float DamageModifier, const bool bForceTracer, AActor* NewOwner, const TArray<AActor*>& InActorsToIgnore) override PURE_VIRTUAL(InitializeWithData,);
-    
+    void InitializeWithData(const FAmmoStaticData& InAmmoStaticData, const float InVelocity, const float DamageModifier, AActor* NewOwner, const TArray<AActor*>& InActorsToIgnore) override PURE_VIRTUAL(InitializeWithData, );
+
     UFUNCTION(BlueprintCallable)
     void Initialize(URadiusProjectileInfo* ProjectileInfo) override PURE_VIRTUAL(Initialize,);
     

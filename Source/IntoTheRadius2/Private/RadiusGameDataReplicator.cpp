@@ -30,6 +30,9 @@ void ARadiusGameDataReplicator::SetAccessLvlPoints(int32 NewAccessPoints) {
 void ARadiusGameDataReplicator::SetAccessLevel(int32 NewLevel) {
 }
 
+void ARadiusGameDataReplicator::PrintReplicatorData() const {
+}
+
 void ARadiusGameDataReplicator::PrintItemDynamicData() const {
 }
 

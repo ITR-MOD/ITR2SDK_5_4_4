@@ -45,10 +45,10 @@ public:
     void Stop();
     
     UFUNCTION(BlueprintCallable)
-    void Start();
-    
+    void Start(const bool bIsPlayer);
+
     UFUNCTION(BlueprintCallable)
-    void Initialize(const bool ForceTracer, const FGameplayTag AmmoTypeID);
-    
+    void Initialize(const FGameplayTag AmmoTypeID);
+
 };
 

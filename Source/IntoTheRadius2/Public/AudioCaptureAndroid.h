@@ -1,12 +1,12 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "Kismet/BlueprintFunctionLibrary.h"
+//CROSS-MODULE INCLUDE V2: -ModuleName=Engine -ObjectName=BlueprintFunctionLibrary -FallbackName=BlueprintFunctionLibrary
 #include "AudioCaptureAndroid.generated.h"
 
 class UMicrophoneSpeakComponent;
 
 UCLASS(Blueprintable)
-class UNIVERSALVOICECHATPRO_API UAudioCaptureAndroid : public UBlueprintFunctionLibrary {
+class INTOTHERADIUS2_API UAudioCaptureAndroid : public UBlueprintFunctionLibrary {
     GENERATED_BODY()
 public:
     UAudioCaptureAndroid();

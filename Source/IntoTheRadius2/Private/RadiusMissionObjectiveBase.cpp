@@ -13,6 +13,10 @@ void URadiusMissionObjectiveBase::UndoObjective() {
 void URadiusMissionObjectiveBase::OnRep_OwningMission() {
 }
 
+EMissionObjectiveType URadiusMissionObjectiveBase::GetObjectiveType() {
+    return EMissionObjectiveType::None;
+}
+
 void URadiusMissionObjectiveBase::GetObjectiveDescriptions(FText& ShortDescription, FText& LongDescription) {
 }
 

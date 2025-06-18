@@ -3,7 +3,7 @@
 
 URadiusSliderComponent::URadiusSliderComponent(const FObjectInitializer& ObjectInitializer) : Super(ObjectInitializer) {
     this->bUpdateInTick = false;
-    this->SliderBehaviorWhenReleased = EVRInteractibleSliderDropBehavior::Stay;
+    this->SliderBehaviorWhenReleased = EVRInteractibleSliderDropBehavior::ReturnToStart;
     this->FramesToAverage = 3;
     this->SliderMomentumFriction = 3.00f;
     this->SliderRestitution = 0.00f;

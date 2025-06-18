@@ -15,8 +15,8 @@ class INTOTHERADIUS2_API UFLProjectiles : public UBlueprintFunctionLibrary {
 public:
     UFLProjectiles();
 
-    UFUNCTION(BlueprintCallable, meta=(WorldContext="WorldContextObject"))
-    static void SpawnBulletProjectile(const UObject* WorldContextObject, const FTransform& Transform, const FAmmoStaticData& AmmoStaticData, const float Velocity, const float AccuracyRadians, const float DamageModifier, AActor* Owner, APawn* Instigator, const bool IsForceTrace, bool& State, AActor*& Actor);
-    
+    UFUNCTION(BlueprintCallable, meta = (WorldContext = "WorldContextObject"))
+    static void SpawnBulletProjectile(const UObject* WorldContextObject, const FTransform& Transform, const FAmmoStaticData& AmmoStaticData, const float Velocity, const float AccuracyRadians, const float DamageModifier, AActor* Owner, APawn* Instigator, bool& State, AActor*& Actor);
+
 };
 

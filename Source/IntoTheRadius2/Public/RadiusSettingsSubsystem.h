@@ -64,6 +64,18 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void SetSubtitlesOn(const bool bIsOn) const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void SetSpectatorStability(const float Stability) const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void SetSpectatorFOV(const float FOV) const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void SetSpectatorEnabled(const bool bIsOn) const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void SetSpectatorBrightness(const float Brightness) const;
+
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void SetSpeakersName(const FString& NewSpeakersName) const;
     
@@ -124,6 +136,9 @@ public:
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void SetHighlightDroppedItems(const bool Value) const;
     
+    UFUNCTION(BlueprintCallable, BlueprintPure = false)
+    void SetHideHelmet(const bool Value) const;
+
     UFUNCTION(BlueprintCallable, BlueprintPure=false)
     void SetHeightMeasurementSystem(ERadiusHeightMeasurementSystem HeightMeasurementSystem) const;
     
@@ -209,6 +224,10 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsHighlightDroppedItemsOn() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool IsHideHelmet() const;
+
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     bool IsGrippingTap() const;
@@ -245,6 +264,18 @@ public:
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     EQualityType GetTextures() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetSpectatorStability() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetSpectatorFOV() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    bool GetSpectatorEnabled() const;
+
+    UFUNCTION(BlueprintCallable, BlueprintPure)
+    float GetSpectatorBrightness() const;
     
     UFUNCTION(BlueprintCallable, BlueprintPure)
     FString GetSpeakersName() const;
